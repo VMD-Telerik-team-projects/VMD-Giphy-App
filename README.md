@@ -1,5 +1,13 @@
 # VMD-Giphy-App
 First team project
+>Giphy API:
+
+Name: VMD Giphy App
+
+API Key: 5GYey1g40Kqb3LgSi65mxgNVU8vQzqyb
+
+Endpoints: https://developers.giphy.com/docs/api/endpoint#search
+
 
 >## **Functional Requirements**
 
