@@ -1,0 +1,16 @@
+nav {
+    grid-area: menu;
+    height: 60px;
+    background: url('../images//banner-bottom.png');
+    font-size: 1.75em;
+    line-height: 60px;
+    padding: 20px;
+    color: white;
+    display: flex;
+}
+
+nav a {
+    color: rgb(95, 191, 255);
+    text-decoration: none;
+    margin: 0 10px;
+}

@@ -1,0 +1,16 @@
+{
+  "name": "vmd-giphy-app",
+  "version": "1.0.0",
+  "description": "First team project",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}
