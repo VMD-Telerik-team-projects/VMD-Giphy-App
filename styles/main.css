@@ -37,3 +37,49 @@ nav #search {
 nav #search:focus {
     outline: none;
 }
+
+/* Home-view */
+
+#home {
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+    width: 100;
+  }
+
+  #home:hover {
+    border-color: #666;
+  }
+
+  .content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
