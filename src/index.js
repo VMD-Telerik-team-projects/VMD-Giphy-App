@@ -6,8 +6,8 @@ import { uploadGifFn } from "./events/upload-events.js";
 import { q } from "./events/helpers.js";
 
 //  TODO: Change any constants that point to the "constants" folder (now deleted). Redirect to "common/constants.js"
-import { q } from "./events/helpers.js";
-import { toSearchView } from "./views/search-view.js";
+// import { q } from "./events/helpers.js";
+// import { toSearchView } from "./views/search-view.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   q("input#search").value = "";
@@ -19,11 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
       loadPage(event.target.getAttribute("data-page"));
     }
   });
-  q("upload-form").addEventListener("submit", (event) => {
-    //upload button event
-    event.preventDefault();
-    uploadGifFn(q("upload-form"));
-  });
+
+  // q(".gif-upload-btn").addEventListener("click", (event) => {
+  //   //upload button event
+  //   // event.preventDefault();
+  //   uploadGifFn(q(".upload-form"));
+  // });
 
   // fetchObjectFromServer("random")
   //   .then((res) => console.log(res))
@@ -32,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //  Search on "Enter" key press
   q("input#search").addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
+      console.log(event.key);
       event.preventDefault();
       renderSearchItems(event.target.value);
     }

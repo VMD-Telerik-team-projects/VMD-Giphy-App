@@ -1,18 +1,23 @@
-import { CONTAINER_SELECTOR, HOME, UPLOAD } from "../common/constants.js";
+import {
+  CONTAINER_SELECTOR,
+  HOME,
+  UPLOAD,
+  ABOUT,
+} from "../common/constants.js";
 import { q, setActiveNav } from "./helpers.js";
 import { gifDetailsView } from "../views/gif-details-view.js";
 import { favoritesView } from "../views/favorites-view.js";
 import { toHomeView } from "../views/home-view.js";
 import { fetchObjectFromServer } from "../api/api-access.js";
 import { toUploadView } from "../views/upload-view.js";
-import { CONTAINER_SELECTOR, HOME, ABOUT } from '../common/constants.js';
-import { q, setActiveNav } from './helpers.js';
-import { gifDetailsView } from '../views/gif-details-view.js';
-import { favoritesView } from '../views/favorites-view.js';
-import { toHomeView } from '../views/home-view.js';
-import { fetchObjectFromServer } from '../api/api-access.js';
-import { toAboutView } from '../views/about-view.js';
-import { toSearchView } from '../views/search-view.js';
+// import { CONTAINER_SELECTOR, HOME, ABOUT } from '../common/constants.js';
+// import { q, setActiveNav } from "./helpers.js";
+// import { gifDetailsView } from "../views/gif-details-view.js";
+// import { favoritesView } from "../views/favorites-view.js";
+// import { toHomeView } from "../views/home-view.js";
+// import { fetchObjectFromServer } from "../api/api-access.js";
+import { toAboutView } from "../views/about-view.js";
+// import { toSearchView } from '../views/search-view.js';
 
 /**
  * loads the specified page.
@@ -59,18 +64,18 @@ export const displayHome = () => {
 
 export const displayAbout = () => {
   q(CONTAINER_SELECTOR).innerHTML = toAboutView();
-}
+};
 
-// export const displaySearch = () => {
-//   q(CONTAINER_SELECTOR).innerHTML = toSearchView();
-// }
+export const displaySearch = () => {
+  q(CONTAINER_SELECTOR).innerHTML = toSearchView();
+};
 
 /**
  * Displays the upload page view.
  */
 export const uploadFn = () => {
   console.log("upload");
-  
+
   q(CONTAINER_SELECTOR).innerHTML = toUploadView();
 };
 
