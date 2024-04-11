@@ -66,3 +66,5 @@ export async function fetchObjectFromServer(endpoint, query, rating, limit, inde
       }
     });
 }
+
+

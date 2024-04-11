@@ -1,15 +1,16 @@
-import { CONTAINER_SELECTOR, HOME } from '../common/constants.js';
-import { q, setActiveNav } from './helpers.js';
-import { gifDetailsView } from '../views/gif-details-view.js';
-import { favoritesView } from '../views/favorites-view.js';
-import { toHomeView } from '../views/home-view.js';
-import { fetchObjectFromServer } from '../api/api-access.js';
+import { CONTAINER_SELECTOR, HOME, UPLOAD } from "../common/constants.js";
+import { q, setActiveNav } from "./helpers.js";
+import { gifDetailsView } from "../views/gif-details-view.js";
+import { favoritesView } from "../views/favorites-view.js";
+import { toHomeView } from "../views/home-view.js";
+import { fetchObjectFromServer } from "../api/api-access.js";
+import { toUploadView } from "../views/upload-view.js";
 
 /**
  * loads the specified page.
  * @param {string} page - The page to be loaded.
  */
-export const loadPage = (page = '') => {
+export const loadPage = (page = "") => {
   switch (page) {
     case HOME:
       setActiveNav(HOME);
@@ -17,9 +18,9 @@ export const loadPage = (page = '') => {
     // case DISPLAY_UPLOADED_VIEW:
     //   setActiveNav(DISPLAY_UPLOADED_VIEW);
     //   return displayUploadedGifs();
-    // case UPLOAD_VIEW:
-    //   setActiveNav(UPLOAD_VIEW);
-    //   return displayUpload();
+    case UPLOAD:
+      setActiveNav(UPLOAD);
+      return uploadFn();
     // case FAVORITES_VIEW:
     //   setActiveNav(FAVORITES_VIEW);
     //   return displayFavorites();
@@ -32,17 +33,26 @@ export const loadPage = (page = '') => {
     // case GIF_DETAILS_VIEW:
     //   setActiveNav(GIF_DETAILS_VIEW);
     //   return displayGifDetails();
-    // default:
-    //   return null;
+    default:
+      return null;
   }
 };
-  
+
 /**
  * Displays the home view.
  */
 export const displayHome = () => {
-  console.log('home');
+  console.log("home");
   q(CONTAINER_SELECTOR).innerHTML = toHomeView();
+};
+
+/**
+ * Displays the upload page view.
+ */
+export const uploadFn = () => {
+  console.log("upload");
+  
+  q(CONTAINER_SELECTOR).innerHTML = toUploadView();
 };
 
 /**

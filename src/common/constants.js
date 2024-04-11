@@ -2,7 +2,7 @@ export const HOME = "home";
 
 export const TRENDING = "trending";
 
-export const upload = "upload";
+export const UPLOAD = "upload-gif";
 
 export const HISTORY = "history";
 
