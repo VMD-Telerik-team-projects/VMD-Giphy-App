@@ -3,26 +3,36 @@ body {
     font-size: 16pt;
 }
 
+/* Navigation */
+
 nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 15px 45px 15px 45px;
-    /* font-size: 1.25em; */
-    font-size: 1.25vw;
+    padding: 1.25% 2.5%;
+    font-size: 1.4vw;
     background-color: black;
 }
 
 nav a {
-    margin: 5px;
     text-decoration: none;
     color: white;
+}
+
+nav img {
+    width: 2.25%;
 }
 
 nav #search {
     width: 30%;
     border: 1px solid black;
     border-radius: 5px;
+    padding: 0.4%;
     padding-left: 1%;
-    font-size: 0.8vw;
+    font-size: 1.1vw;
+    margin-right: -3%;
+}
+
+nav #search:focus {
+    outline: none;
 }
