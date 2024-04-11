@@ -5,6 +5,14 @@ import { favoritesView } from "../views/favorites-view.js";
 import { toHomeView } from "../views/home-view.js";
 import { fetchObjectFromServer } from "../api/api-access.js";
 import { toUploadView } from "../views/upload-view.js";
+import { CONTAINER_SELECTOR, HOME, ABOUT } from '../common/constants.js';
+import { q, setActiveNav } from './helpers.js';
+import { gifDetailsView } from '../views/gif-details-view.js';
+import { favoritesView } from '../views/favorites-view.js';
+import { toHomeView } from '../views/home-view.js';
+import { fetchObjectFromServer } from '../api/api-access.js';
+import { toAboutView } from '../views/about-view.js';
+import { toSearchView } from '../views/search-view.js';
 
 /**
  * loads the specified page.
@@ -15,6 +23,9 @@ export const loadPage = (page = "") => {
     case HOME:
       setActiveNav(HOME);
       return displayHome();
+    case ABOUT:
+      setActiveNav(ABOUT);
+      return displayAbout();
     // case DISPLAY_UPLOADED_VIEW:
     //   setActiveNav(DISPLAY_UPLOADED_VIEW);
     //   return displayUploadedGifs();
@@ -45,6 +56,14 @@ export const displayHome = () => {
   console.log("home");
   q(CONTAINER_SELECTOR).innerHTML = toHomeView();
 };
+
+export const displayAbout = () => {
+  q(CONTAINER_SELECTOR).innerHTML = toAboutView();
+}
+
+// export const displaySearch = () => {
+//   q(CONTAINER_SELECTOR).innerHTML = toSearchView();
+// }
 
 /**
  * Displays the upload page view.
