@@ -27,7 +27,13 @@ export default class CardContainer {
    * @param {HTMLElement} container
    */
   #addToHTML(container) {
-    document.querySelector('main').appendChild(container);
+    const node = document.querySelector('main');
+    //  Update: main needs to be refreshed every time a card container is added 
+    while (node.firstChild) {
+      node.removeChild(node.lastChild);
+    }
+
+    node.appendChild(container);
   }
 
 
@@ -38,7 +44,7 @@ export default class CardContainer {
    */
   #updateContainer() {
     // TODO: Load h2 dynamically (title of page)
-    this.#container.innerHTML = `<h2>Search GIFs for "gray cat":</h2>` + this.#cards.join('');
+    this.#container.innerHTML = this.#cards.join('');
     console.log(this.#cards.join('\n'));
     this.#addToHTML(this.#container);
   }

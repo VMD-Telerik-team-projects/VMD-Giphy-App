@@ -33,6 +33,7 @@
   min-width: 16%;
   min-height: 20%;
   max-height: 20%;
+  background-color: #eee;
 }
 
 .card-component img {
@@ -53,7 +54,7 @@
   color: #555;
 }
 
-.card-component span {
+.card-component a {
   margin-top: 3%;
 }
 
@@ -65,8 +66,18 @@
 
 #view-details {
   display: inline;
-  font-size: 1.2vw;
-  color: #1DA1F2;
+  font-size: 1vw;
+  background-color: #4267B2;
+  padding: 4%;
+  margin-top: 10%;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 4%;
+}
+
+#view-details:hover {
+  cursor: pointer;
+  opacity: 0.92;
 }
 
 #add-to-favorites {
