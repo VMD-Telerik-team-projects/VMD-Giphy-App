@@ -1,3 +1,5 @@
+/* eslint-disable new-cap */
+/* eslint-disable func-style */
 import { APIData } from './api-data.js';
 
 let keyIndex = 0;
@@ -38,15 +40,15 @@ const URLBuilder = (endpoint, query, rating = 'g', GIFLimit = 25, indexOfKey) =>
 };
 
 /**
-* Public interface for fetching data from the server
-*
-* @async
-* @param {string} endpoint API Endpoint
-* @param {string} [query] API Query i.e. search (optional)
-* @param {string} [rating] Rating (optional)
-* @param {number} [limit] Number of GIFs returned (optional)
-* @param {boolean} [useBackUpKey] Use backup key when API access limit is exceeded (optional)
-* @return {Promise<object>}
+  * Public interface for fetching data from the server
+  *
+  * @async
+  * @param {string} endpoint API Endpoint
+  * @param {string} [query] API Query i.e. search (optional)
+  * @param {string} [rating] Rating (optional)
+  * @param {number} [limit] Number of GIFs returned (optional)
+  * @param {number} [indexOfKey] Track which key needs to be used (optional)
+  * @return {Promise<object>}
 */
 export async function fetchObjectFromServer(endpoint, query, rating, limit, indexOfKey = keyIndex) {
   const url = URLBuilder(endpoint, query, rating, limit, indexOfKey);
@@ -56,7 +58,7 @@ export async function fetchObjectFromServer(endpoint, query, rating, limit, inde
       const data = await res.json();
 
       // if the limit of 100 API calls per hour is exceeded, use backup key
-      if (data.meta.status === 429 && !useBackUpKey) {
+      if (data.meta.status === 429) {
         keyIndex++;
         return fetchObjectFromServer(endpoint, query, rating, limit, keyIndex);
       } else {
