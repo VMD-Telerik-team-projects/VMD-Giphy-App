@@ -24,3 +24,6 @@ export const setActiveNav = (page) => {
       );
 };
 
+export const toBinString = (bytes) =>
+  bytes.reduce((str, byte) => str + byte.toString(2).padStart(8, '0'), '');
+

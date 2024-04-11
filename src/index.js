@@ -2,12 +2,10 @@
 import { loadPage } from "./events/navigation-events.js";
 import { renderSearchItems } from "./events/search-events.js";
 import { HOME } from "./common/constants.js";
-// import { uploadGifFn } from "./events/upload-events.js";
-import { q } from "./events/helpers.js";
-
-//  TODO: Change any constants that point to the "constants" folder (now deleted). Redirect to "common/constants.js"
-// import { q } from "./events/helpers.js";
-// import { toSearchView } from "./views/search-view.js";
+import { uploadGifFn } from "./events/upload-events.js";
+import { q, toBinString } from "./events/helpers.js";
+import { gifDetailsView } from "./views/gif-details-view.js";
+import { uploadGIFToServer } from "./api/api-access.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   q("input#search").value = "";
@@ -17,6 +15,21 @@ document.addEventListener("DOMContentLoaded", () => {
     //nav events
     if (event.target.classList.contains("nav-link")) {
       loadPage(event.target.getAttribute("data-page"));
+    }
+
+    //  ! TEST CODE
+    //  TODO: Move the array buffer/buffer string conversion someplace else
+    if (event.target.classList.contains('gif-upload-btn')) {
+      const file = q('#gif-input').files[0];
+      const arrBuffer = file.arrayBuffer();
+
+      console.log(file);
+      
+      arrBuffer
+        .then(data => {
+          const decoder = new TextDecoder();
+          console.log(uploadGIFToServer(decoder.decode(data)));
+        });
     }
   });
 
