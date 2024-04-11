@@ -2,7 +2,7 @@
 import { loadPage } from "./events/navigation-events.js";
 import { renderSearchItems } from "./events/search-events.js";
 import { HOME } from "./common/constants.js";
-import { uploadGifFn } from "./events/upload-events.js";
+// import { uploadGifFn } from "./events/upload-events.js";
 import { q } from "./events/helpers.js";
 
 //  TODO: Change any constants that point to the "constants" folder (now deleted). Redirect to "common/constants.js"
@@ -20,12 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // q(".gif-upload-btn").addEventListener("click", (event) => {
-  //   //upload button event
-  //   // event.preventDefault();
-  //   uploadGifFn(q(".upload-form"));
-  // });
-
   // fetchObjectFromServer("random")
   //   .then((res) => console.log(res))
   //   .catch((err) => console.error(err));
@@ -37,6 +31,28 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       renderSearchItems(event.target.value);
     }
+  });
+
+  q("#upload-form").addEventListener("submit", (event) => {
+    //upload button event
+    event.preventDefault();
+
+    // const userFile = q("#gif-input").files[0];
+    const file = formData.get("file");
+    const formData = new FormData();
+
+    const apiKey = "gMqqK49H6lYoTzL24Sr4YCSMaFdAtO9V";
+    // formData.append("user-file", userFile);
+    formDataWithApiKey.append("file", file);
+    formDataWithApiKey.append("api_key", apiKey);
+
+    fetch(`upload.giphy.com/v1/gifs/?api_key=${apiKey}`, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
   });
 
   loadPage(HOME);
