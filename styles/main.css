@@ -83,3 +83,21 @@ nav #search:focus {
     font-size: 16px;
     line-height: 1.5;
   }
+
+  /* home-view image */
+  
+  .content-image {
+    width: 50%;
+    max-width: 200px;
+    display: block;
+    margin: 0 auto;
+    border: 2px solid rgb(255, 66, 151);
+    border-radius: 10px;
+    cursor: crosshair; 
+  }
+
+  .content-image:hover {
+    border-color: red;
+    transform: scale(1.1);
+  }
+  
