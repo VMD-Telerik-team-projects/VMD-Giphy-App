@@ -20,8 +20,6 @@ const URLBuilderGET = (endpoint, query, rating = 'g', GIFLimit = 25, indexOfKey)
   const baseURL = APIData.baseURL;
   const point = APIData.endpoints[endpoint.toUpperCase()];
 
-  FormData()
-
   switch (point) {
   case 'random':
     return `${baseURL}${point}?api_key=${apiKey}&rating=${rating}`;
