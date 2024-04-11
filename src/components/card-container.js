@@ -1,5 +1,3 @@
-import { CardComponent } from '../components/card.js';
-
 export default class CardContainer {
   #cards = [];
   #container;
@@ -13,7 +11,7 @@ export default class CardContainer {
   /**
    * Add a card to the container and update container (which updates the main section)
    *
-   * @param {CardComponent} card
+   * @param {string} card
    */
   addCard(card) {
     this.#cards.push(card);
@@ -45,7 +43,6 @@ export default class CardContainer {
   #updateContainer() {
     // TODO: Load h2 dynamically (title of page)
     this.#container.innerHTML = this.#cards.join('');
-    console.log(this.#cards.join('\n'));
     this.#addToHTML(this.#container);
   }
 };

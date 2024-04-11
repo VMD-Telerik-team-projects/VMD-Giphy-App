@@ -10,6 +10,10 @@ export const FAVORITES = "favorites";
 
 export const ABOUT = "about";
 
+export const NAVIGATION = "nav";
+
+export const NAV_LINK = "nav-link"
+
 export const CONTAINER_SELECTOR = "#container";
 
 export const FULL_HEART = "❤";

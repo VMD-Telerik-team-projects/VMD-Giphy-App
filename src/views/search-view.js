@@ -1,5 +1,7 @@
 import { CardComponent } from "../components/card.js";
 import CardContainer from "../components/card-container.js";
+import { NAVIGATION, NAV_LINK } from "../common/constants.js";
+import { q } from '../events/helpers.js';
 
 /**
  * Create cards for each search result and add to container (which will update main's contents)
@@ -17,4 +19,15 @@ export const toSearchView = async (gifs) => {
     
     container.addCard(card);
   });
+
+  // remove "active" class from navbar when searching
+  const nav = q(NAVIGATION);
+
+  nav.childNodes.forEach(async navElement => {
+    if (await navElement.classList.contains('nav-link')) {
+      if (await navElement.classList.contains('active')) {
+        await navElement.classList.remove('active');
+      }
+    }
+  })
 }
