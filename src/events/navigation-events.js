@@ -4,6 +4,8 @@ import {
   UPLOAD,
   ABOUT,
   FAVORITES
+  TRENDING,
+  SEARCH,
 } from '../common/constants.js';
 import { q, setActiveNav } from './helpers.js';
 import { gifDetailsView } from '../views/gif-details-view.js';
@@ -13,22 +15,28 @@ import { fetchObjectFromServer } from '../api/api-access.js';
 import { toUploadView } from '../views/upload-view.js';
 import { toAboutView } from '../views/about-view.js';
 import { tofavouritesRandom } from '../views/favourites-random-view.js';
+import { renderTrendingItems } from './trending-events.js';
+import { renderSearchItems } from './search-events.js';
 
 /**
  * loads the specified page.
  * @param {string} page - The page to be loaded.
+ * @param {string} [searchTerm] - The search term (optional).
  */
-export const loadPage = (page = '') => {
+export const loadPage = async (page = '', searchTerm) => {
   switch (page) {
   case HOME:
     setActiveNav(HOME);
-    return displayHome();
+    return await displayHome();
   case ABOUT:
     setActiveNav(ABOUT);
     return displayAbout();
-    // case DISPLAY_UPLOADED_VIEW:
-    //   setActiveNav(DISPLAY_UPLOADED_VIEW);
-    //   return displayUploadedGifs();
+  case TRENDING:
+    setActiveNav(TRENDING);
+    return displayTrendingGifs();
+  case SEARCH:
+    setActiveNav(SEARCH);
+    return displaySearch(searchTerm);
   case UPLOAD:
     setActiveNav(UPLOAD);
     return uploadFn();
@@ -41,6 +49,12 @@ export const loadPage = (page = '') => {
     // case TRENDING_VIEW:
     //   setActiveNav(TRENDING_VIEW);
     //   return displayTrendingGifs();
+    // case DISPLAY_UPLOADED_VIEW:
+    //   setActiveNav(DISPLAY_UPLOADED_VIEW);
+    //   return displayUploadedGifs();
+    // case FAVORITES_VIEW:
+    //   setActiveNav(FAVORITES_VIEW);
+    //   return displayFavorites();
     // case GIF_DETAILS_VIEW:
     //   setActiveNav(GIF_DETAILS_VIEW);
     //   return displayGifDetails();
@@ -52,18 +66,30 @@ export const loadPage = (page = '') => {
 /**
  * Displays the home view.
  */
-export const displayHome = () => {
-  console.log('home');
-  q(CONTAINER_SELECTOR).innerHTML = toHomeView();
+export const displayHome = async () => {
+  q(CONTAINER_SELECTOR).innerHTML = await toHomeView();
 };
 
+/**
+ * Displays the about view.
+ */
 export const displayAbout = () => {
   q(CONTAINER_SELECTOR).innerHTML = toAboutView();
 };
 
-export const displaySearch = () => {
-  q(CONTAINER_SELECTOR).innerHTML = toSearchView();
+/**
+ * Displays the search view.
+ */
+export const displaySearch = async (query) => {
+  await renderSearchItems(query);
 };
+
+/**
+ * Displays the trending GIFs.
+ */
+const displayTrendingGifs = async () => {
+  await renderTrendingItems();
+}
 
 /**
  * Displays the upload page view.

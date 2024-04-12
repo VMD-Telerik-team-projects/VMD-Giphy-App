@@ -1,7 +1,8 @@
 import { fetchObjectFromServer } from '../api/api-access.js';
 import { toSearchView } from '../views/search-view.js';
+import { SEARCH } from '../common/constants.js';
 
 export async function renderSearchItems(searchTerm) {
-  const search = await fetchObjectFromServer('search', searchTerm, 'g', 100);
-  return toSearchView(search);
+  const search = await fetchObjectFromServer(SEARCH, searchTerm, 'g', 100);
+  await toSearchView(search);
 }
