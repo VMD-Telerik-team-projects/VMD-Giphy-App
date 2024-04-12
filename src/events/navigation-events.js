@@ -3,40 +3,33 @@ import {
   HOME,
   UPLOAD,
   ABOUT,
-} from "../common/constants.js";
-import { q, setActiveNav } from "./helpers.js";
-import { gifDetailsView } from "../views/gif-details-view.js";
-import { favoritesView } from "../views/favorites-view.js";
-import { toHomeView } from "../views/home-view.js";
-import { fetchObjectFromServer } from "../api/api-access.js";
-import { toUploadView } from "../views/upload-view.js";
-// import { CONTAINER_SELECTOR, HOME, ABOUT } from '../common/constants.js';
-// import { q, setActiveNav } from "./helpers.js";
-// import { gifDetailsView } from "../views/gif-details-view.js";
-// import { favoritesView } from "../views/favorites-view.js";
-// import { toHomeView } from "../views/home-view.js";
-// import { fetchObjectFromServer } from "../api/api-access.js";
-import { toAboutView } from "../views/about-view.js";
-// import { toSearchView } from '../views/search-view.js';
+} from '../common/constants.js';
+import { q, setActiveNav } from './helpers.js';
+import { gifDetailsView } from '../views/gif-details-view.js';
+import { favoritesView } from '../views/favorites-view.js';
+import { toHomeView } from '../views/home-view.js';
+import { fetchObjectFromServer } from '../api/api-access.js';
+import { toUploadView } from '../views/upload-view.js';
+import { toAboutView } from '../views/about-view.js';
 
 /**
  * loads the specified page.
  * @param {string} page - The page to be loaded.
  */
-export const loadPage = (page = "") => {
+export const loadPage = (page = '') => {
   switch (page) {
-    case HOME:
-      setActiveNav(HOME);
-      return displayHome();
-    case ABOUT:
-      setActiveNav(ABOUT);
-      return displayAbout();
+  case HOME:
+    setActiveNav(HOME);
+    return displayHome();
+  case ABOUT:
+    setActiveNav(ABOUT);
+    return displayAbout();
     // case DISPLAY_UPLOADED_VIEW:
     //   setActiveNav(DISPLAY_UPLOADED_VIEW);
     //   return displayUploadedGifs();
-    case UPLOAD:
-      setActiveNav(UPLOAD);
-      return uploadFn();
+  case UPLOAD:
+    setActiveNav(UPLOAD);
+    return uploadFn();
     // case FAVORITES_VIEW:
     //   setActiveNav(FAVORITES_VIEW);
     //   return displayFavorites();
@@ -49,8 +42,8 @@ export const loadPage = (page = "") => {
     // case GIF_DETAILS_VIEW:
     //   setActiveNav(GIF_DETAILS_VIEW);
     //   return displayGifDetails();
-    default:
-      return null;
+  default:
+    return null;
   }
 };
 
@@ -58,7 +51,7 @@ export const loadPage = (page = "") => {
  * Displays the home view.
  */
 export const displayHome = () => {
-  console.log("home");
+  console.log('home');
   q(CONTAINER_SELECTOR).innerHTML = toHomeView();
 };
 
@@ -74,7 +67,7 @@ export const displaySearch = () => {
  * Displays the upload page view.
  */
 export const uploadFn = () => {
-  console.log("upload");
+  console.log('upload');
 
   q(CONTAINER_SELECTOR).innerHTML = toUploadView();
 };
@@ -85,7 +78,7 @@ export const uploadFn = () => {
  */
 export const displayGifDetails = async (gif) => {
   try {
-    const gif = await fetchObjectFromServer("details");
+    const gif = await fetchObjectFromServer('details');
     q(CONTAINER_SELECTOR).innerHTML = gifDetailsView(gif);
   } catch (error) {
     console.error(error);
@@ -97,7 +90,7 @@ export const displayGifDetails = async (gif) => {
  */
 export const displayFavorites = async () => {
   try {
-    const favorites = await fetchObjectFromServer("favorites");
+    const favorites = await fetchObjectFromServer('favorites');
     q(CONTAINER_SELECTOR).innerHTML = favoritesView(favorites);
   } catch (error) {
     console.error(error);

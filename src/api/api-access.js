@@ -42,9 +42,9 @@ const URLBuilderGET = (endpoint, query, rating = 'g', GIFLimit = 25, indexOfKey)
 
 /**
  * Create URL for uploading using the public API (POST)
- * 
- * @param {string} file Bytes string
- * @param {number} [indexOfKey] Index of access key
+ *
+ * @param {string} [file] Bytes string (not required but request doesn't work without it in the parameters for some reason)
+ * @param {number} [indexOfKey] Index of access key (optional)
  * @return {string}
  */
 const URLBuilderPOST = (file, indexOfKey) => {
@@ -82,7 +82,14 @@ export async function fetchObjectFromServer(endpoint, query, rating, limit, inde
     });
 }
 
-//  TODO: Document and remove magic numbers, strings, etc.
+//  TODO: Remove magic numbers, strings, etc.
+//  TODO: Generate keys for upload endpoint dynamically
+/**
+ * A function that makes a POST request to upload a GIF to a GIPHY server
+ *
+ * @param {number} [indexOfKey] Index of API Access key
+ * @returns
+ */
 export async function uploadGIFToServer(indexOfKey = 2) {
   const apiKey = APIData.keys[indexOfKey];
   const uploadURL = URLBuilderPOST(undefined, 2);

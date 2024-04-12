@@ -1,14 +1,14 @@
 /**
  * Shorthand for document.querySelector
- * @param {string} selector 
- * @returns {Element}
+ * @param {string} selector
+ * @return {Element}
  */
 export const q = (selector) => document.querySelector(selector);
 
 /**
  * Shorthand for document.querySelectorAll
- * @param {string} selector 
- * @returns {NodeLists<Element>}
+ * @param {string} selector
+ * @return {NodeLists<Element>}
  */
 export const qs = (selector) => document.querySelectorAll(selector);
 
@@ -18,12 +18,8 @@ export const setActiveNav = (page) => {
   Array
     .from(navs)
     .forEach(element => element
-      .getAttribute('data-page') === page
-      ? element.classList.add('active')
-      : element.classList.remove('active')
-      );
+      .getAttribute('data-page') === page ?
+      element.classList.add('active') :
+      element.classList.remove('active'),
+    );
 };
-
-export const toBinString = (bytes) =>
-  bytes.reduce((str, byte) => str + byte.toString(2).padStart(8, '0'), '');
-

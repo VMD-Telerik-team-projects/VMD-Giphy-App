@@ -1,6 +1,6 @@
 export const uploadGifFn = async (uploadForm) => {
   const formData = new FormData(uploadForm);
-  const file = formData.get("file");
+  const file = formData.get('file');
   console.log(formData);
 
   // if (file) {

@@ -1,6 +1,6 @@
 /**
  * The home view of the GIPHY APP.
- * @returns {string} The content for the home view.
+ * @return {string} The content for the home view.
  */
 export const toAboutView = () => `
 <div id="about">

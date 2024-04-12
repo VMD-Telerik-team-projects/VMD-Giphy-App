@@ -1,8 +1,8 @@
 /**
  * It displays a list of favourite GIFs.
- * 
+ *
  * @param {Object} gifs - An array of GIF objects representing the favourite GIFs.
- * @returns {string} The HTML content displaying the list of favorites.
+ * @return {string} The HTML content displaying the list of favorites.
  */
 export const favoritesView = (gifs) => `
 <div id="gifs">

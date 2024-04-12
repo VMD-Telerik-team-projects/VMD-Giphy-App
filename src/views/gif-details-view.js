@@ -1,8 +1,8 @@
 /**
  * It displays detailed information about a GIF
- * 
+ *
  * @param {Object} gif - The GIF object containing the details ID, title, rating, username, date and source.
- * @returns {string} The HTML content that displays the GIF details.
+ * @return {string} The HTML content that displays the GIF details.
  */
 export const gifDetailsView = (gif) => `
 <div class="gif-details">

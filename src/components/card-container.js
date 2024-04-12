@@ -26,7 +26,7 @@ export default class CardContainer {
    */
   #addToHTML(container) {
     const node = document.querySelector('main');
-    //  Update: main needs to be refreshed every time a card container is added 
+    //  Update: main needs to be refreshed every time a card container is added
     while (node.firstChild) {
       node.removeChild(node.lastChild);
     }
