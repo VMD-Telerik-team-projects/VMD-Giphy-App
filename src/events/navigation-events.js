@@ -3,6 +3,7 @@ import {
   HOME,
   UPLOAD,
   ABOUT,
+  FAVORITES
 } from '../common/constants.js';
 import { q, setActiveNav } from './helpers.js';
 import { gifDetailsView } from '../views/gif-details-view.js';
@@ -11,6 +12,7 @@ import { toHomeView } from '../views/home-view.js';
 import { fetchObjectFromServer } from '../api/api-access.js';
 import { toUploadView } from '../views/upload-view.js';
 import { toAboutView } from '../views/about-view.js';
+import { tofavouritesRandom } from '../views/favourites-random-view.js';
 
 /**
  * loads the specified page.
@@ -30,9 +32,9 @@ export const loadPage = (page = '') => {
   case UPLOAD:
     setActiveNav(UPLOAD);
     return uploadFn();
-    // case FAVORITES_VIEW:
-    //   setActiveNav(FAVORITES_VIEW);
-    //   return displayFavorites();
+    case FAVORITES:
+      setActiveNav(FAVORITES);
+      displayFavorites();
     // case SEARCH_VIEW:
     //   setActiveNav(SEARCH_VIEW);
     //   return displaySearch();
@@ -88,11 +90,18 @@ export const displayGifDetails = async (gif) => {
 /**
  * Displays favorite GIFs.
  */
-export const displayFavorites = async () => {
-  try {
-    const favorites = await fetchObjectFromServer('favorites');
-    q(CONTAINER_SELECTOR).innerHTML = favoritesView(favorites);
-  } catch (error) {
-    console.error(error);
-  }
+//export const displayFavorites = async () => {
+  //try {
+    //const favorites = await fetchObjectFromServer('favorites');
+    //q(CONTAINER_SELECTOR).innerHTML = favoritesView(favorites);
+  //} catch (error) {
+    //console.error(error);
+  //}
+//};
+
+/**
+ * Displays favorite GIFs - random.
+ */
+export const displayFavorites = () => {
+  q(CONTAINER_SELECTOR).innerHTML = tofavouritesRandom();
 };
