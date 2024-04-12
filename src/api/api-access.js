@@ -1,3 +1,4 @@
+//  TODO: Remove magic numbers, strings, etc.
 /* eslint-disable new-cap */
 /* eslint-disable func-style */
 import { APIData } from './api-data.js';
@@ -82,7 +83,6 @@ export async function fetchObjectFromServer(endpoint, query, rating, limit, inde
     });
 }
 
-//  TODO: Remove magic numbers, strings, etc.
 //  TODO: Generate keys for upload endpoint dynamically
 /**
  * A function that makes a POST request to upload a GIF to a GIPHY server

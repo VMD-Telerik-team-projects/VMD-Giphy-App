@@ -20,6 +20,6 @@ export const RANDOM = 'random';
 
 export const CONTAINER_SELECTOR = '#container';
 
-export const FULL_HEART = '❤';
+export const FULL_STAR= '★';
 
-export const EMPTY_HEART = '♡';
+export const EMPTY_STAR = '☆';
