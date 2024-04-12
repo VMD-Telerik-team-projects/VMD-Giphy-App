@@ -3,7 +3,7 @@ import {
   HOME,
   UPLOAD,
   ABOUT,
-  FAVORITES
+  FAVORITES,
   TRENDING,
   SEARCH,
 } from '../common/constants.js';
