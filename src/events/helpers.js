@@ -23,3 +23,13 @@ export const setActiveNav = (page) => {
       element.classList.remove('active'),
     );
 };
+
+/**
+ * Get the search term from the input field
+ * @return {string} String value of input field
+ */
+export const getSearchTerm = () => {
+  const search = q('input#search');
+
+  return search.value;
+};

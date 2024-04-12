@@ -12,4 +12,6 @@ export const toTrendingView = async (gifs) => {
 
     container.addCard(card);
   });
+
+  container.render('Trending GIFs');
 }

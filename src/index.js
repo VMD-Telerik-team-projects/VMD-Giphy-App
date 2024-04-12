@@ -1,9 +1,8 @@
 // import { fetchObjectFromServer } from "../api-access.js";
 import { loadPage } from './events/navigation-events.js';
 import { HOME } from './common/constants.js';
-import { q } from './events/helpers.js';
+import { getSearchTerm, q } from './events/helpers.js';
 import { uploadGIFToServer } from './api/api-access.js';
-import { renderSearchItems } from './events/search-events.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   q('input#search').value = '';
@@ -34,8 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // input event listener
   q('input#search').addEventListener('keypress', (event) => {
     if(event.key === 'Enter') {
-      const searchTerm = q('input#search').value;
-      loadPage('search', searchTerm);
+      loadPage('search', getSearchTerm());
     }
   });
 

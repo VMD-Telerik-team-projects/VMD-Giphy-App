@@ -20,7 +20,7 @@ export const toHomeView = async () => {
   
   return `
   <div id="home">
-    <h1>Random GIF</h1>
+    <h2 class="global-h2">Random GIF</h2>
     <div class="content">
       ${CardComponent(img, username)}
       </div>

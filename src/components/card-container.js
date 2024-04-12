@@ -5,7 +5,7 @@ export default class CardContainer {
   constructor() {
     this.#container = document.createElement('div');
     this.#container.classList.add('card-container');
-    this.#updateContainer();
+    this.render();
   }
 
   /**
@@ -15,7 +15,14 @@ export default class CardContainer {
    */
   addCard(card) {
     this.#cards.push(card);
-    this.#updateContainer();
+  }
+
+  /**
+   * Updates the container and loads into HTML using the private addToHTML method
+   */
+  render(title) {
+    this.#container.innerHTML = this.#cards.join('');
+    this.#addToHTML(title, this.#container);
   }
 
   /**
@@ -24,25 +31,18 @@ export default class CardContainer {
    * @private
    * @param {HTMLElement} container
    */
-  #addToHTML(container) {
+  #addToHTML(title, container) {
     const node = document.querySelector('main');
     //  Update: main needs to be refreshed every time a card container is added
     while (node.firstChild) {
       node.removeChild(node.lastChild);
     }
 
+    const h2 = document.createElement('h2');
+    h2.innerText = title;
+    h2.classList.add('global-h2');
+    node.appendChild(h2);
+
     node.appendChild(container);
-  }
-
-
-  /**
-   * Updates the container and loads into HTML using the private addToHTML method
-   *
-   * @private
-   */
-  #updateContainer() {
-    // TODO: Load h2 dynamically (title of page)
-    this.#container.innerHTML = this.#cards.join('');
-    this.#addToHTML(this.#container);
   }
 };
