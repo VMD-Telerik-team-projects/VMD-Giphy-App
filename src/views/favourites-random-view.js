@@ -2,7 +2,7 @@ import { CardComponent } from '../components/card.js';
 
 /**
  * The favourites random view of the GIPHY APP.
- * @returns {string} The content for the favourites if no favourites are added.
+ * @return {string} The content for the favourites if no favourites are added.
  */
 export const tofavouritesRandom = () => `
 <div id="favourites">

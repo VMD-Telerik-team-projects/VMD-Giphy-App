@@ -14,4 +14,4 @@ export const toTrendingView = async (gifs) => {
   });
 
   container.render('Trending GIFs');
-}
+};

@@ -1,6 +1,6 @@
 import { CardComponent } from '../components/card.js';
 import CardContainer from '../components/card-container.js';
-import { NAVIGATION, NAV_LINK } from '../common/constants.js';
+import { NAVIGATION } from '../common/constants.js';
 import { getSearchTerm, q } from '../events/helpers.js';
 
 /**

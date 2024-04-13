@@ -83,16 +83,14 @@ export async function fetchObjectFromServer(endpoint, query, rating, limit, inde
     });
 }
 
-//  TODO: Generate keys for upload endpoint dynamically
 /**
  * A function that makes a POST request to upload a GIF to a GIPHY server
- *
- * @param {number} [indexOfKey] Index of API Access key
+ * Will always start with the last key and the limit is 5 uploads per day so it doesn't need to be loaded dynamically
  * @returns
  */
-export async function uploadGIFToServer(indexOfKey = 2) {
-  const apiKey = APIData.keys[indexOfKey];
-  const uploadURL = URLBuilderPOST(undefined, 2);
+export async function uploadGIFToServer() {
+  const apiKey = APIData.keys[3];
+  const uploadURL = URLBuilderPOST(undefined, 3);
   const fileInput = q('#gif-input');
   const file = fileInput.files[0];
 

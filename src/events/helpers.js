@@ -1,3 +1,5 @@
+import { FAVORITES } from '../common/constants.js';
+
 /**
  * Shorthand for document.querySelector
  * @param {string} selector
@@ -12,6 +14,10 @@ export const q = (selector) => document.querySelector(selector);
  */
 export const qs = (selector) => document.querySelectorAll(selector);
 
+/**
+ *
+ * @param {string} page
+ */
 export const setActiveNav = (page) => {
   const navs = qs('a.nav-link');
 
@@ -32,4 +38,16 @@ export const getSearchTerm = () => {
   const search = q('input#search');
 
   return search.value;
+};
+
+//  TODO: Check if element is in localStorage
+//  TODO: Finish documenting the function
+/**
+ * Check if the element is added to favorites
+ *
+ * @param {any} element Element to check
+ * @return {boolean}
+ */
+export const isAddedToFavorites = (element) => {
+  return !element.classList.includes(FAVORITES);
 };

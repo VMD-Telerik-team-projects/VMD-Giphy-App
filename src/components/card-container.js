@@ -29,6 +29,7 @@ export default class CardContainer {
    * Load container dynamically in HTML
    *
    * @private
+   * @param {string} title
    * @param {HTMLElement} container
    */
   #addToHTML(title, container) {
@@ -38,6 +39,7 @@ export default class CardContainer {
       node.removeChild(node.lastChild);
     }
 
+    // load page title dynamically
     const h2 = document.createElement('h2');
     h2.innerText = title;
     h2.classList.add('global-h2');

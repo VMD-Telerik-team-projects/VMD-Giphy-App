@@ -9,9 +9,7 @@ import {
 } from '../common/constants.js';
 import { q, setActiveNav } from './helpers.js';
 import { gifDetailsView } from '../views/gif-details-view.js';
-import { favoritesView } from '../views/favorites-view.js';
 import { toHomeView } from '../views/home-view.js';
-import { fetchObjectFromServer } from '../api/api-access.js';
 import { toUploadView } from '../views/upload-view.js';
 import { toAboutView } from '../views/about-view.js';
 import { tofavouritesRandom } from '../views/favourites-random-view.js';
@@ -33,16 +31,16 @@ export const loadPage = async (page = '', searchTerm) => {
     return displayAbout();
   case TRENDING:
     setActiveNav(TRENDING);
-    return displayTrendingGifs();
+    return await displayTrendingGifs();
   case SEARCH:
     setActiveNav(SEARCH);
-    return displaySearch(searchTerm);
+    return await displaySearch(searchTerm);
   case UPLOAD:
     setActiveNav(UPLOAD);
-    return uploadFn();
-    case FAVORITES:
-      setActiveNav(FAVORITES);
-      displayFavorites();
+    return displayUpload();
+  case FAVORITES:
+    setActiveNav(FAVORITES);
+    displayFavorites();
     // case SEARCH_VIEW:
     //   setActiveNav(SEARCH_VIEW);
     //   return displaySearch();
@@ -80,7 +78,7 @@ export const displayAbout = () => {
 /**
  * Displays the search view.
  */
-export const displaySearch = async (query) => {
+const displaySearch = async (query) => {
   await renderSearchItems(query);
 };
 
@@ -89,14 +87,12 @@ export const displaySearch = async (query) => {
  */
 const displayTrendingGifs = async () => {
   await renderTrendingItems();
-}
+};
 
 /**
  * Displays the upload page view.
  */
-export const uploadFn = () => {
-  console.log('upload');
-
+export const displayUpload = () => {
   q(CONTAINER_SELECTOR).innerHTML = toUploadView();
 };
 
@@ -119,9 +115,9 @@ export const displayFavorites = () => {
     const favorites = localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : [];
     if (favorites.length === 0) {
       displayFavoritesRandom();
-     // q(CONTAINER_SELECTOR).innerHTML = favoritesView([]);
+      // q(CONTAINER_SELECTOR).innerHTML = favoritesView([]);
     } else {
-    q(CONTAINER_SELECTOR).innerHTML = favorites.map(gif => gifDetailsView(gif)).join('');
+      q(CONTAINER_SELECTOR).innerHTML = favorites.map(gif => gifDetailsView(gif)).join('');
     }
   } catch (error) {
     console.error(error);

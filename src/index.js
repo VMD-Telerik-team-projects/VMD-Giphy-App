@@ -14,16 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
       loadPage(event.target.getAttribute('data-page'));
     }
 
-    //  TODO: Implement GIF upload here
-    //  ! TEST CODE
-    //  TODO: Move the array buffer/buffer string conversion someplace else
+    // gif upload event
     if (event.target.classList.contains('gif-upload-btn')) {
-      const file = q('#gif-input').files[0];
-      const arrBuffer = file.arrayBuffer();
+      const fileBuffer = q('#gif-input').files[0].arrayBuffer();
 
-      console.log(file);
-
-      arrBuffer
+      fileBuffer
         .then(() => {
           console.log(uploadGIFToServer());
         });
@@ -32,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // input event listener
   q('input#search').addEventListener('keypress', (event) => {
-    if(event.key === 'Enter') {
+    if (event.key === 'Enter') {
       loadPage('search', getSearchTerm());
     }
   });
