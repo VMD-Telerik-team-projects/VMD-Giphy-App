@@ -94,7 +94,7 @@ const displayUploaded = async () => {
  * Displays the upload page view.
  */
 export const uploadFn = () => {
-  console.log("upload");
+  q(CONTAINER_SELECTOR).innerHTML = toUploadView();
 };
 
 /**
