@@ -16,10 +16,24 @@ export const NAVIGATION = 'nav';
 
 export const NAV_LINK = 'nav-link';
 
+export const DATA_PAGE = 'data-page';
+
+export const ACTIVE = 'active';
+
 export const RANDOM = 'random';
 
 export const CONTAINER_SELECTOR = '#container';
 
+export const SEARCH_SELECTOR = '#search';
+
+export const GIF_INPUT_SELECTOR = '#gif-input';
+
 export const FULL_STAR= '⭐';
 
 export const EMPTY_STAR = '☆';
+
+export const DEFAULT_RATING = 'g';
+
+export const DEFAULT_GIF_LIMIT = 25;
+
+export const LOCAL_STORAGE_GIF_ID = 'gifId';

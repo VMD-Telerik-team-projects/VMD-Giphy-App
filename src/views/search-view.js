@@ -1,6 +1,6 @@
 import { CardComponent } from '../components/card.js';
 import CardContainer from '../components/card-container.js';
-import { NAVIGATION } from '../common/constants.js';
+import { NAVIGATION, NAV_LINK, ACTIVE } from '../common/constants.js';
 import { getSearchTerm, q } from '../events/helpers.js';
 
 /**
@@ -26,9 +26,9 @@ export const toSearchView = async (gifs) => {
   const nav = q(NAVIGATION);
 
   nav.childNodes.forEach(async navElement => {
-    if (await navElement.classList.contains('nav-link')) {
-      if (await navElement.classList.contains('active')) {
-        await navElement.classList.remove('active');
+    if (await navElement.classList.contains(NAV_LINK)) {
+      if (await navElement.classList.contains(ACTIVE)) {
+        await navElement.classList.remove(ACTIVE);
       }
     }
   });

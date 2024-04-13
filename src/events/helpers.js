@@ -1,4 +1,4 @@
-import { FAVORITES } from '../common/constants.js';
+import { ACTIVE, DATA_PAGE, SEARCH_SELECTOR } from '../common/constants.js';
 
 /**
  * Shorthand for document.querySelector
@@ -15,8 +15,8 @@ export const q = (selector) => document.querySelector(selector);
 export const qs = (selector) => document.querySelectorAll(selector);
 
 /**
- *
- * @param {string} page
+ * Set the active navigation link
+ * @param {string} page Current navigation page
  */
 export const setActiveNav = (page) => {
   const navs = qs('a.nav-link');
@@ -24,9 +24,9 @@ export const setActiveNav = (page) => {
   Array
     .from(navs)
     .forEach(element => element
-      .getAttribute('data-page') === page ?
-      element.classList.add('active') :
-      element.classList.remove('active'),
+      .getAttribute(DATA_PAGE) === page ?
+      element.classList.add(ACTIVE) :
+      element.classList.remove(ACTIVE),
     );
 };
 
@@ -35,19 +35,7 @@ export const setActiveNav = (page) => {
  * @return {string} String value of input field
  */
 export const getSearchTerm = () => {
-  const search = q('input#search');
+  const search = q(SEARCH_SELECTOR);
 
   return search.value;
-};
-
-//  TODO: Check if element is in localStorage
-//  TODO: Finish documenting the function
-/**
- * Check if the element is added to favorites
- *
- * @param {any} element Element to check
- * @return {boolean}
- */
-export const isAddedToFavorites = (element) => {
-  return !element.classList.includes(FAVORITES);
 };

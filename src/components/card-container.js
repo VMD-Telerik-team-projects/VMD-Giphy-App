@@ -19,6 +19,8 @@ export default class CardContainer {
 
   /**
    * Updates the container and loads into HTML using the private addToHTML method
+   *
+   * @param {string} title
    */
   render(title) {
     this.#container.innerHTML = this.#cards.join('');
