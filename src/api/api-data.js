@@ -1,16 +1,17 @@
 export const APIData = {
-  baseURL: 'https://api.giphy.com/v1/gifs/',
+  baseURL: "https://api.giphy.com/v1/gifs/",
   endpoints: {
-    TRENDING: 'trending',
-    SEARCH: 'search',
-    RANDOM: 'random',
+    TRENDING: "trending",
+    SEARCH: "search",
+    RANDOM: "random",
+    HISTORY: "history",
   },
-  uploadURL: 'https://upload.giphy.com/v1/gifs',
+  uploadURL: "https://upload.giphy.com/v1/gifs",
   keys: [
     // feel free to add more
-    '5GYey1g40Kqb3LgSi65mxgNVU8vQzqyb',
-    '7qWYwkTVNOZKswZkyuMAw5CELCsDBfaa',
-    'gMqqK49H6lYoTzL24Sr4YCSMaFdAtO9V',
-    'nEBYnGEHtHpyKYYnlMGgrcoRjRy8OURC',
+    "5GYey1g40Kqb3LgSi65mxgNVU8vQzqyb",
+    "7qWYwkTVNOZKswZkyuMAw5CELCsDBfaa",
+    "gMqqK49H6lYoTzL24Sr4YCSMaFdAtO9V",
+    "nEBYnGEHtHpyKYYnlMGgrcoRjRy8OURC",
   ],
 };

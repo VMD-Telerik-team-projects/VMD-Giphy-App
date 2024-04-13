@@ -32,6 +32,10 @@ const URLBuilderGET = (
       return `${baseURL}${point}?api_key=${apiKey}&rating=${rating}`;
     case "trending":
       return `${baseURL}${point}?api_key=${apiKey}&limit=${GIFLimit}&rating=${rating}`;
+
+    case "history":
+      return `${baseURL}?api_key=${apiKey}&ids=${query}&rating=${rating}`;
+
     case "search":
       if (!query && query !== 0) {
         throw new Error("Search query cannot be undefined or null!");
