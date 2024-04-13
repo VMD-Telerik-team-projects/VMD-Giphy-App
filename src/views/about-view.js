@@ -5,7 +5,7 @@
 export const toAboutView = () => `
 <div id="about">
   <div class="content">
-  <img src="./src/img/R.jpg" alt="GIPHY Logo" class="content-image">
+  <img src="./src/img/bubbles.gif" alt="GIPHY Logo" class="content-image">
     <h1 id="#topH1">Welcome to the GIPHY APP</h1>
     <h1>Created by: Group 2</h1>
     <h1>Date: 2024</h1>
