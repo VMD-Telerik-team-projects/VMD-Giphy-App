@@ -6,58 +6,52 @@ import {
   FAVORITES,
   TRENDING,
   SEARCH,
-} from '../common/constants.js';
-import { q, setActiveNav } from './helpers.js';
-import { gifDetailsView } from '../views/gif-details-view.js';
-import { toHomeView } from '../views/home-view.js';
-import { toUploadView } from '../views/upload-view.js';
-import { toAboutView } from '../views/about-view.js';
-import { tofavouritesRandom } from '../views/favourites-random-view.js';
-import { renderTrendingItems } from './trending-events.js';
-import { renderSearchItems } from './search-events.js';
+  HISTORY,
+} from "../common/constants.js";
+import { q, setActiveNav } from "./helpers.js";
+import { gifDetailsView } from "../views/gif-details-view.js";
+import { toHomeView } from "../views/home-view.js";
+import { fetchObjectFromServer } from "../api/api-access.js";
+import { toUploadView } from "../views/upload-view.js";
+import { toAboutView } from "../views/about-view.js";
+import { tofavouritesRandom } from "../views/favourites-random-view.js";
+import { renderTrendingItems } from "./trending-events.js";
+import { renderSearchItems } from "./search-events.js";
+import { renderUploadedGifs } from "./history-events.js";
 
 /**
  * loads the specified page.
  * @param {string} page - The page to be loaded.
  * @param {string} [searchTerm] - The search term (optional).
  */
-export const loadPage = async (page = '', searchTerm) => {
+export const loadPage = async (page = "", searchTerm) => {
   switch (page) {
-  case HOME:
-    setActiveNav(HOME);
-    return await displayHome();
-  case ABOUT:
-    setActiveNav(ABOUT);
-    return displayAbout();
-  case TRENDING:
-    setActiveNav(TRENDING);
-    return await displayTrendingGifs();
-  case SEARCH:
-    setActiveNav(SEARCH);
-    return await displaySearch(searchTerm);
-  case UPLOAD:
-    setActiveNav(UPLOAD);
-    return displayUpload();
-  case FAVORITES:
-    setActiveNav(FAVORITES);
-    displayFavorites();
-    // case SEARCH_VIEW:
-    //   setActiveNav(SEARCH_VIEW);
-    //   return displaySearch();
-    // case TRENDING_VIEW:
-    //   setActiveNav(TRENDING_VIEW);
-    //   return displayTrendingGifs();
-    // case DISPLAY_UPLOADED_VIEW:
-    //   setActiveNav(DISPLAY_UPLOADED_VIEW);
-    //   return displayUploadedGifs();
-    // case FAVORITES_VIEW:
-    //   setActiveNav(FAVORITES_VIEW);
-    //   return displayFavorites();
-    // case GIF_DETAILS_VIEW:
-    //   setActiveNav(GIF_DETAILS_VIEW);
-    //   return displayGifDetails();
-  default:
-    return null;
+    case HOME:
+      setActiveNav(HOME);
+      return await displayHome();
+    case ABOUT:
+      setActiveNav(ABOUT);
+      return displayAbout();
+
+    case SEARCH:
+      setActiveNav(SEARCH);
+      return displaySearch(searchTerm);
+    case UPLOAD:
+      setActiveNav(UPLOAD);
+      return uploadFn();
+    case TRENDING:
+      setActiveNav(TRENDING);
+      return displayTrendingGifs();
+    case HISTORY:
+      setActiveNav(HISTORY);
+      return displayUploaded();
+
+    case FAVORITES:
+      setActiveNav(FAVORITES);
+      displayFavorites();
+
+    default:
+      return null;
   }
 };
 
@@ -90,9 +84,16 @@ const displayTrendingGifs = async () => {
 };
 
 /**
+ * Displays the uploaded GIFs.
+ */
+const displayUploaded = async () => {
+  await renderUploadedGifs();
+};
+
+/**
  * Displays the upload page view.
  */
-export const displayUpload = () => {
+export const uploadFn = () => {
   q(CONTAINER_SELECTOR).innerHTML = toUploadView();
 };
 
@@ -101,7 +102,9 @@ export const displayUpload = () => {
  */
 export const displayGifDetails = () => {
   try {
-    q(CONTAINER_SELECTOR).innerHTML = gifs.map(gif => gifDetailsView(gif)).join('');
+    q(CONTAINER_SELECTOR).innerHTML = gifs
+      .map((gif) => gifDetailsView(gif))
+      .join("");
   } catch (error) {
     console.error(error);
   }
@@ -112,12 +115,16 @@ export const displayGifDetails = () => {
  */
 export const displayFavorites = () => {
   try {
-    const favorites = localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : [];
+    const favorites = localStorage.getItem("favorites")
+      ? JSON.parse(localStorage.getItem("favorites"))
+      : [];
     if (favorites.length === 0) {
       displayFavoritesRandom();
       // q(CONTAINER_SELECTOR).innerHTML = favoritesView([]);
     } else {
-      q(CONTAINER_SELECTOR).innerHTML = favorites.map(gif => gifDetailsView(gif)).join('');
+      q(CONTAINER_SELECTOR).innerHTML = favorites
+        .map((gif) => gifDetailsView(gif))
+        .join("");
     }
   } catch (error) {
     console.error(error);
