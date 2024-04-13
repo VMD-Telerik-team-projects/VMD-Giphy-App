@@ -11,7 +11,7 @@ export const CardComponent = (img, username) => `
 <div class="card-component">
   <img src="${img}" />
   <a href="#">@${username}</a>
-  <button id="view-details" href="#">
+  <button id="view-details" class="glow-on-hover" href="#">
     View Details
   </button>
   <button id="add-to-favorites" href="#">
