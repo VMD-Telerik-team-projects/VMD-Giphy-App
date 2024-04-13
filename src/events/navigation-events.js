@@ -102,12 +102,10 @@ export const uploadFn = () => {
 
 /**
  * Displays GIF details.
- * @param {string} gif
  */
-export const displayGifDetails = async (gif) => {
+export const displayGifDetails = () => {
   try {
-    const gif = await fetchObjectFromServer('details');
-    q(CONTAINER_SELECTOR).innerHTML = gifDetailsView(gif);
+    q(CONTAINER_SELECTOR).innerHTML = gifs.map(gif => gifDetailsView(gif)).join('');
   } catch (error) {
     console.error(error);
   }
@@ -116,18 +114,23 @@ export const displayGifDetails = async (gif) => {
 /**
  * Displays favorite GIFs.
  */
-//export const displayFavorites = async () => {
-  //try {
-    //const favorites = await fetchObjectFromServer('favorites');
-    //q(CONTAINER_SELECTOR).innerHTML = favoritesView(favorites);
-  //} catch (error) {
-    //console.error(error);
-  //}
-//};
+export const displayFavorites = () => {
+  try {
+    const favorites = localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : [];
+    if (favorites.length === 0) {
+      displayFavoritesRandom();
+     // q(CONTAINER_SELECTOR).innerHTML = favoritesView([]);
+    } else {
+    q(CONTAINER_SELECTOR).innerHTML = favorites.map(gif => gifDetailsView(gif)).join('');
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 /**
  * Displays favorite GIFs - random.
  */
-export const displayFavorites = () => {
+export const displayFavoritesRandom = () => {
   q(CONTAINER_SELECTOR).innerHTML = tofavouritesRandom();
 };
