@@ -11,7 +11,6 @@ import {
 import { q, setActiveNav } from "./helpers.js";
 import { gifDetailsView } from "../views/gif-details-view.js";
 import { toHomeView } from "../views/home-view.js";
-import { fetchObjectFromServer } from "../api/api-access.js";
 import { toUploadView } from "../views/upload-view.js";
 import { toAboutView } from "../views/about-view.js";
 import { tofavouritesRandom } from "../views/favourites-random-view.js";

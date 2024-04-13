@@ -1,14 +1,15 @@
 // import { fetchObjectFromServer } from "../api-access.js";
 import { loadPage } from './events/navigation-events.js';
-import { HOME } from './common/constants.js';
+import { CONTAINER_SELECTOR, HOME } from './common/constants.js';
 import { getSearchTerm, q } from './events/helpers.js';
-import { uploadGIFToServer } from './api/api-access.js';
+import { fetchObjectFromServer, uploadGIFToServer } from './api/api-access.js';
+import { gifDetailsView } from './views/gif-details-view.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   q('input#search').value = '';
 
   // add global event listener
-  document.addEventListener('click', (event) => {
+  document.addEventListener('click', async (event) => {
     // nav events
     if (event.target.classList.contains('nav-link')) {
       loadPage(event.target.getAttribute('data-page'));
@@ -22,6 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(() => {
           console.log(uploadGIFToServer());
         });
+    }
+
+    // TODO: gif details event
+    if (event.target.id === 'view-details') {
+      console.log('view details clicked');
     }
   });
 

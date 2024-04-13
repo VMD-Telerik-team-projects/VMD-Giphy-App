@@ -14,8 +14,8 @@ export const CardComponent = (img, username) => `
   <button id="view-details" href="#">
     View Details
   </button>
-  <a id="add-to-favorites" href="#">
+  <button id="add-to-favorites" href="#">
     ${EMPTY_STAR}
-  </a>
+  </button>
 </div>
 `;

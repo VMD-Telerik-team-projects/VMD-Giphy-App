@@ -70,10 +70,27 @@
 
 #view-details:hover {
   cursor: pointer;
-  opacity: 0.92;
+  opacity: 0.90;
+}
+
+#view-details:active {
+  opacity: 0.8;
+  border: 1px inset rgba(32, 32, 32, 0.1);
 }
 
 #add-to-favorites {
   color: black;
+  border: none;
+  background-color: transparent;
+  margin-top: 5%;
   font-size: 1.5vw;
+}
+
+#add-to-favorites:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+#add-to-favorites:active {
+  opacity: 0.8;
 }
