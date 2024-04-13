@@ -58,7 +58,7 @@ const URLBuilderGET = (
  * @param {number} [indexOfKey] Index of access key (optional)
  * @return {string}
  */
-const URLBuilderPOST = (file, indexOfKey) => {
+const URLBuilderPOST = (indexOfKey) => {
   const apiKey = APIData.keys[indexOfKey];
   const baseURL = APIData.uploadURL;
 
@@ -105,8 +105,8 @@ export async function fetchObjectFromServer(
  */
 export async function uploadGIFToServer() {
   const apiKey = APIData.keys[3];
-  const uploadURL = URLBuilderPOST(undefined, 3);
-  const fileInput = q("#gif-input");
+  const uploadURL = URLBuilderPOST(3);
+  const fileInput = q('#gif-input');
   const file = fileInput.files[0];
 
   if (!file) {
