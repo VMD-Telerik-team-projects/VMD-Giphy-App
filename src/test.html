@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Favorite GIFs</title>
+</head>
+<body>
+<div id="container">
+    <!-- GIFs will be rendered here -->
+</div>
+<button id="show-favorites">Show Favorites</button>
+<button id="go-back" style="display:none;">Go Back</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('show-favorites').addEventListener('click', displayFavorites);
+    document.getElementById('go-back').addEventListener('click', displayAllGifs);
+    displayAllGifs(); 
+});
+
+async function fetchFavoriteGifs() {
+    const favorites = localStorage.getItem('favorites');
+    return favorites ? JSON.parse(favorites) : [];
+}
+
+async function displayAllGifs() {
+    try {
+        const response = await fetch(`https://api.giphy.com/v1/gifs/trending?api_key=7qWYwkTVNOZKswZkyuMAw5CELCsDBfaa`);
+        const data = await response.json();
+        document.getElementById('container').innerHTML = data.data.map(gif => `
+            <div class="gif">
+                <img src="${gif.images.original.url}" alt="${gif.title}">
+                <p>${gif.title}</p>
+                <button onclick='addToFavorites(${JSON.stringify(gif)})'>Add to Favorites</button>
+            </div>
+        `).join('');
+        document.getElementById('show-favorites').style.display = 'inline-block';
+        document.getElementById('go-back').style.display = 'none';
+    } catch (error) {
+        console.error('Error fetching GIFs:', error);
+    }
+}
+
+async function displayFavorites() {
+    try {
+        const favorites = await fetchFavoriteGifs();
+        document.getElementById('container').innerHTML = favoritesView(favorites);
+        document.getElementById('show-favorites').style.display = 'none';
+        document.getElementById('go-back').style.display = 'inline-block';
+    } catch (error) {
+        console.error('Error fetching favorite GIFs:', error);
+    }
+}
+
+function favoritesView(gifs) {
+    return `
+    <div id="gifs">
+      <h1>Favorite GIFs:</h1>
+      <div class="content">
+        ${gifs.map(gif => `
+          <div class="gif">
+            <img src="${gif.images.original.url}" alt="${gif.title}">
+            <p>${gif.title}</p>
+          </div>
+        `).join('\n') || '<p>Favorites category is empty.</p>'}
+      </div>
+    </div>
+    `;
+}
+
+function addToFavorites(gif) {
+    try {
+        let favorites = localStorage.getItem('favorites') ? JSON.parse(localStorage.getItem('favorites')) : [];
+        
+        const isAlreadyFavorite = favorites.some(favorite => favorite.id === gif.id);
+        
+        if (!isAlreadyFavorite) {
+            favorites.push(gif);
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            alert('GIF added to favorites!');
+        } else {
+            alert('GIF is already in favorites!');
+        }
+    } catch (error) {
+        console.error('Error adding to favorites:', error);
+    }
+}
+</script> 
+</body>
+</html>
