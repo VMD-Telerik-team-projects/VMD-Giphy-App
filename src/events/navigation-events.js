@@ -115,6 +115,6 @@ export const displayFavorites = () => {
 };
 
 /** Displays favorite GIFs - random. */
-export const displayFavoritesRandom = () => {
-  q(CONTAINER_SELECTOR).innerHTML = tofavouritesRandom();
+export const displayFavoritesRandom = async () => {
+  q(CONTAINER_SELECTOR).innerHTML = await tofavouritesRandom();
 };
