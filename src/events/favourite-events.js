@@ -52,3 +52,15 @@ export function toggleFavorite(gif) {
 
   return !isFavorite;
 }
+
+/**
+ * Toggle between empty and full star icons
+ * @param {HTMLElement} button The button element to toggle the start icon
+ */
+export const toggleStar = (button) => {
+  if(button.innerHTML.trim() === EMPTY_STAR.trim()) {
+    button.innerHTML = FULL_STAR;
+  } else {
+    button.innerHTML = EMPTY_STAR;
+  }
+};

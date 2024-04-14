@@ -7,6 +7,7 @@ import {
   TRENDING,
   SEARCH,
   HISTORY,
+  VIEW_DETAILS,
 } from '../common/constants.js';
 import { q, setActiveNav } from './helpers.js';
 import { gifDetailsView } from '../views/gif-details-view.js';
@@ -46,6 +47,9 @@ export const loadPage = async (page = '', searchTerm) => {
   case FAVORITES:
     setActiveNav(FAVORITES);
     displayFavorites();
+    case VIEW_DETAILS:
+      setActiveNav(VIEW_DETAILS);
+      displayFavorites(); //TO DO: displayGifDetails
   default:
     return null;
   }

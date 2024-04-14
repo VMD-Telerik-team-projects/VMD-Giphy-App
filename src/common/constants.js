@@ -37,3 +37,5 @@ export const DEFAULT_RATING = 'g';
 export const DEFAULT_GIF_LIMIT = 25;
 
 export const LOCAL_STORAGE_GIF_ID = 'gifId';
+
+export const VIEW_DETAILS = 'view details';

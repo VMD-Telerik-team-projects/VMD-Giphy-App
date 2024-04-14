@@ -1,8 +1,9 @@
 // import { fetchObjectFromServer } from "../api-access.js";
-import { loadPage } from './events/navigation-events.js';
-import { DATA_PAGE, GIF_INPUT_SELECTOR, HOME, NAV_LINK, SEARCH, SEARCH_SELECTOR } from './common/constants.js';
+import { displayFavorites, loadPage } from './events/navigation-events.js';
+import { DATA_PAGE, GIF_INPUT_SELECTOR, HOME, NAV_LINK, SEARCH, SEARCH_SELECTOR, VIEW_DETAILS } from './common/constants.js';
 import { getSearchTerm, q } from './events/helpers.js';
 import { uploadGIFToServer } from './api/api-access.js';
+import { toggleStar } from './events/favourite-events.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   q(SEARCH_SELECTOR).value = '';
@@ -26,9 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // TODO: gif details event
+    // gif details event
     if (event.target.id === 'view-details') {
-      console.log('view details clicked');
+      loadPage(VIEW_DETAILS, displayFavorites()); //TODO: displayGifDetails
+    }
+
+    // add to-favorites button event
+    if(event.target.id === 'add-to-favorites') {
+      toggleStar(event.target);
     }
   });
 
