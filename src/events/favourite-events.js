@@ -1,45 +1,46 @@
-import { fetchDetailsFromServer } from "../api/api-access.js";
-import { FAVORITES, FULL_STAR, EMPTY_STAR } from "../common/constants.js";
+import { fetchDetailsFromServer } from '../api/api-access.js';
+import { FAVORITES, FULL_STAR, EMPTY_STAR } from '../common/constants.js';
+import { loadPage } from './navigation-events.js';
 
 export async function addToFavorites(gif) {
   console.log(gif);
-  const favorites = localStorage.getItem(FAVORITES)
-    ? JSON.parse(localStorage.getItem(FAVORITES))
-    : [];
+  const favorites = localStorage.getItem(FAVORITES) ?
+    JSON.parse(localStorage.getItem(FAVORITES)) :
+    [];
   const isAlreadyFavorite = favorites.some(
-    (favorite) => favorite.id === gif.data.id
+    (favorite) => favorite.id === gif.data.id,
   );
 
   if (!isAlreadyFavorite) {
     favorites.push(gif.data);
     localStorage.setItem(FAVORITES, JSON.stringify(favorites));
 
-    alert("GIF added to favorites!");
+    alert('GIF added to favorites!');
   } else {
-    alert("GIF is already in favorites!");
+    alert('GIF is already in favorites!');
   }
 }
 
 export async function removeFromFavorites(id) {
-  let favorites = localStorage.getItem(FAVORITES)
-    ? JSON.parse(localStorage.getItem(FAVORITES))
-    : [];
+  let favorites = localStorage.getItem(FAVORITES) ?
+    JSON.parse(localStorage.getItem(FAVORITES)) :
+    [];
   favorites = favorites.filter((gif) => gif.id !== id);
 
   localStorage.setItem(FAVORITES, JSON.stringify(favorites));
 
-  alert("GIF removed from favorites!");
+  alert('GIF removed from favorites!');
 }
 
 export async function clearFavorites() {
   localStorage.removeItem(FAVORITES);
-  alert("All GIFs removed from favorites!");
+  alert('All GIFs removed from favorites!');
 }
 
 export async function getFavorites() {
-  return localStorage.getItem(FAVORITES)
-    ? JSON.parse(localStorage.getItem(FAVORITES))
-    : [];
+  return localStorage.getItem(FAVORITES) ?
+    JSON.parse(localStorage.getItem(FAVORITES)) :
+    [];
 }
 
 export async function isGifInFavorites(id) {
@@ -74,5 +75,7 @@ export const toggleStar = async (button, id) => {
     await addToFavorites(gif);
   } else {
     button.innerHTML = EMPTY_STAR;
+    await removeFromFavorites(id);
+    loadPage(FAVORITES);
   }
 };

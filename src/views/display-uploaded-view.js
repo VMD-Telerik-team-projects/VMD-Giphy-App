@@ -1,9 +1,9 @@
-import { CardComponent } from "../components/card.js";
-import CardContainer from "../components/card-container.js";
+import { CardComponent } from '../components/card.js';
+import CardContainer from '../components/card-container.js';
 
 /**
  * Display the uploaded GIFs.
- * @param {object} gifs Uploaded GIFs 
+ * @param {object} gifs Uploaded GIFs
  */
 export const toUploadedView = async (gifs) => {
   const container = new CardContainer();
@@ -18,10 +18,10 @@ export const toUploadedView = async (gifs) => {
     container.addCard(card);
   });
 
-  container.render("Uploaded GIFs");
+  container.render('Uploaded GIFs');
 };
 
 export const toNotUploadedView = () => {
   const container = new CardContainer();
-  container.render("No gifs uploaded yet");
+  container.render('No gifs uploaded yet');
 };

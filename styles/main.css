@@ -1,3 +1,5 @@
+@import "themes.css";
+
 html {
   height: 100%;
 }
@@ -126,10 +128,10 @@ nav #search:focus {
 #about .content-image {
   width: 30%;
   max-width: 300px;
-  border: 2px solid rgb(255, 66, 151);
+  border: 1px solid rgb(255, 66, 151);
   border-radius: 10px;
   margin-top: 3%;
-  cursor: crosshair;
+  cursor: pointer;
 }
 
 #about .content-image:hover {
@@ -336,7 +338,6 @@ body {
   background-size: 200% 200%;
   color: #ffffff;
   -webkit-text-stroke: 0.3px rgb(64, 63, 63);
-  
 }
 
 @keyframes blur {

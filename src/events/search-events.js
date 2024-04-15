@@ -4,7 +4,7 @@ import { DEFAULT_GIF_LIMIT, DEFAULT_RATING, SEARCH } from '../common/constants.j
 
 /**
  * Renders items that match the search query.
- * @param {string} searchTerm Search query 
+ * @param {string} searchTerm Search query
  */
 export async function renderSearchItems(searchTerm) {
   const search = await fetchObjectFromServer(SEARCH, searchTerm, DEFAULT_RATING, DEFAULT_GIF_LIMIT);

@@ -1,5 +1,5 @@
 // import { fetchObjectFromServer } from "../api-access.js";
-import { loadPage } from "./events/navigation-events.js";
+import { loadPage } from './events/navigation-events.js';
 import {
   DATA_PAGE,
   GIF_INPUT_SELECTOR,
@@ -7,24 +7,24 @@ import {
   NAV_LINK,
   SEARCH,
   SEARCH_SELECTOR,
-} from "./common/constants.js";
-import { getSearchTerm, q } from "./events/helpers.js";
-import { uploadGIFToServer } from "./api/api-access.js";
-import { toggleStar } from "./events/favourite-events.js";
-import { renderGifDetails } from "./events/details-events.js";
+} from './common/constants.js';
+import { getSearchTerm, q } from './events/helpers.js';
+import { uploadGIFToServer } from './api/api-access.js';
+import { toggleStar } from './events/favourite-events.js';
+import { renderGifDetails } from './events/details-events.js';
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   // clear search input
-  q(SEARCH_SELECTOR).value = "";
+  q(SEARCH_SELECTOR).value = '';
 
   // add global event listener
-  document.addEventListener("click", async (event) => {
+  document.addEventListener('click', async (event) => {
     if (event.target.classList.contains(NAV_LINK)) {
       loadPage(event.target.getAttribute(DATA_PAGE));
     }
 
     // gif upload event
-    if (event.target.classList.contains("gif-upload-btn")) {
+    if (event.target.classList.contains('gif-upload-btn')) {
       const fileBuffer = q(GIF_INPUT_SELECTOR).files[0].arrayBuffer();
 
       fileBuffer.then(() => {
@@ -33,25 +33,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // gif details event
-    if (event.target.id === "view-details") {
-      const cardComponent = event.target.closest(".card-component");
-      const gifId = cardComponent.getAttribute("data-gif-id");
-      
+    if (event.target.id === 'view-details') {
+      const cardComponent = event.target.closest('.card-component');
+      const gifId = cardComponent.getAttribute('data-gif-id');
+
       await renderGifDetails(gifId);
     }
 
     // add to-favorites button event
-    if (event.target.id === "add-to-favorites") {
-      const cardComponent = event.target.closest(".card-component");
-      const gifId = cardComponent.getAttribute("data-gif-id");
+    if (event.target.id === 'add-to-favorites') {
+      const cardComponent = event.target.closest('.card-component');
+      const gifId = cardComponent.getAttribute('data-gif-id');
 
       await toggleStar(event.target, gifId);
     }
   });
 
   // input event listener
-  q(SEARCH_SELECTOR).addEventListener("keypress", (event) => {
-    if (event.key === "Enter") {
+  q(SEARCH_SELECTOR).addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
       loadPage(SEARCH, getSearchTerm());
     }
   });

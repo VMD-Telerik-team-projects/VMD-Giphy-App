@@ -1,7 +1,7 @@
-import { CardComponent } from "../components/card.js";
-import CardContainer from "../components/card-container.js";
-import { NAVIGATION, NAV_LINK, ACTIVE } from "../common/constants.js";
-import { getSearchTerm, q } from "../events/helpers.js";
+import { CardComponent } from '../components/card.js';
+import CardContainer from '../components/card-container.js';
+import { NAVIGATION, NAV_LINK, ACTIVE } from '../common/constants.js';
+import { getSearchTerm, q } from '../events/helpers.js';
 
 /**
  * Create cards for each search result and add to container (which will update main's contents)

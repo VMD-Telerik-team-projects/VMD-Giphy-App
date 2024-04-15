@@ -1,6 +1,6 @@
-import { CardComponent } from "../components/card.js";
-import { fetchObjectFromServer } from "../api/api-access.js";
-import { RANDOM } from "../common/constants.js";
+import { CardComponent } from '../components/card.js';
+import { fetchObjectFromServer } from '../api/api-access.js';
+import { RANDOM } from '../common/constants.js';
 
 /**
  * The home view of the GIPHY APP.
