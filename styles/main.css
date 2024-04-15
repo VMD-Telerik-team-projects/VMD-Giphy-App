@@ -132,7 +132,7 @@ nav #search:focus {
 #about .content-image {
   width: 30%;
   max-width: 300px;
-  border: 1px solid rgb(255, 66, 151);
+  border: 1.6px solid rgb(255, 66, 151);
   border-radius: 10px;
   margin-top: 3%;
   cursor: pointer;
@@ -141,6 +141,8 @@ nav #search:focus {
 #about .content-image:hover {
   border-color: red;
   transform: scale(1.1);
+  cursor: crosshair;
+  box-shadow: 0 0 8px rgba(255, 66, 151, 0.6); 
 }
 
 #topH1 {
@@ -255,6 +257,10 @@ nav #search:focus {
   border: 1px solid #ddd;
   border-radius: 5px;
   width: 100%;
+}
+
+body img.content-image-u {
+  box-shadow: none;
 }
 
 .gif-upload-btn {
