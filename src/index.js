@@ -44,7 +44,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // add to-favorites button event
     if (event.target.id === "add-to-favorites") {
-      toggleStar(event.target);
+      const cardComponent = event.target.closest(".card-component");
+      const gifId = cardComponent.getAttribute("data-gif-id");
+      console.log(gifId);
+
+      await toggleStar(event.target, gifId);
     }
   });
 

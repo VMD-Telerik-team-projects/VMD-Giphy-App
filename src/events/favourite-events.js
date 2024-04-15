@@ -1,15 +1,17 @@
+import { fetchDetailsFromServer } from "../api/api-access.js";
 import { FAVORITES, FULL_STAR, EMPTY_STAR } from "../common/constants.js";
 
-export function addToFavorites(gif) {
+export async function addToFavorites(gif) {
+  console.log(gif);
   const favorites = localStorage.getItem(FAVORITES)
     ? JSON.parse(localStorage.getItem(FAVORITES))
     : [];
   const isAlreadyFavorite = favorites.some(
-    (favorite) => favorite.id === gif.id
+    (favorite) => favorite.id === gif.data.id
   );
 
   if (!isAlreadyFavorite) {
-    favorites.push(gif);
+    favorites.push(gif.data);
     localStorage.setItem(FAVORITES, JSON.stringify(favorites));
 
     alert("GIF added to favorites!");
@@ -65,9 +67,11 @@ export function toggleFavorite(gif) {
  * Toggle between empty and full star icons
  * @param {HTMLElement} button The button element to toggle the start icon
  */
-export const toggleStar = (button) => {
+export const toggleStar = async (button, id) => {
+  const gif = await fetchDetailsFromServer(id);
   if (button.innerHTML.trim() === EMPTY_STAR.trim()) {
     button.innerHTML = FULL_STAR;
+    await addToFavorites(gif);
   } else {
     button.innerHTML = EMPTY_STAR;
   }
