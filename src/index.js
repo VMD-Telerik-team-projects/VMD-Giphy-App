@@ -9,7 +9,7 @@ import {
   SEARCH_SELECTOR,
   BODY,
   DIDO_THEME,
-  VLADI_THEME
+  VLADI_THEME,
 } from './common/constants.js';
 import { getSearchTerm, q } from './events/helpers.js';
 import { uploadGIFToServer } from './api/api-access.js';
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (event.target.id === 'switch-theme') {
       const body = q(BODY);
-      
+
       if (body.classList.contains(DIDO_THEME)) {
         body.classList.remove(DIDO_THEME);
         body.classList.add(VLADI_THEME);

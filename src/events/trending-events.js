@@ -4,6 +4,9 @@ import { TRENDING, DEFAULT_GIF_LIMIT } from '../common/constants.js';
 
 /**
  * Renders the trending gifs.
+ *
+ * @author Deyan
+ * @async
  */
 export async function renderTrendingItems() {
   const trending = await fetchObjectFromServer(TRENDING, undefined, undefined, DEFAULT_GIF_LIMIT);

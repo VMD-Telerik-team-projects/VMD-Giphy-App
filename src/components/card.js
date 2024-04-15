@@ -1,10 +1,10 @@
 import { EMPTY_STAR, FULL_STAR } from '../common/constants.js';
-import { isGifInFavorites } from '../events/favourite-events.js';
 import { FAVORITES } from '../common/constants.js';
 
 /**
  * Create a card with an image, username, details link, and a favorites functionality
  *
+ * @author Deyan
  * @param {string} img Link to image
  * @param {string} username Uploader's username
  * @param {string} id Gif ID

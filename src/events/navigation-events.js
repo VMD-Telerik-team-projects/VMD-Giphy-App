@@ -57,25 +57,41 @@ export const loadPage = async (page = '', searchTerm) => {
   }
 };
 
-/** Displays the home view. */
+/**
+ * Displays the home view.
+ *
+ * @author Deyan
+ * @async
+ */
 export const displayHome = async () => {
   q(CONTAINER_SELECTOR).innerHTML = await toHomeView();
 };
 
-/** Displays the about view. */
+/**
+ * Displays the about view.
+ * @author Deyan
+ */
 export const displayAbout = () => {
   q(CONTAINER_SELECTOR).innerHTML = toAboutView();
 };
 
 /**
  * Displays the search view.
+ *
+ * @author Deyan
+ * @async
  * @param {string} query The search query.
  */
 const displaySearch = async (query) => {
   await renderSearchItems(query);
 };
 
-/** Displays the trending GIFs. */
+/**
+ * Displays the trending GIFs.
+ *
+ * @author Deyan
+ * @async
+ */
 const displayTrendingGifs = async () => {
   await renderTrendingItems();
 };

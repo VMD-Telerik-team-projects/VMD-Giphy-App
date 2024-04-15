@@ -32,6 +32,8 @@ export const setActiveNav = (page) => {
 
 /**
  * Get the search term from the input field
+ *
+ * @author Deyan
  * @return {string} String value of input field
  */
 export const getSearchTerm = () => {

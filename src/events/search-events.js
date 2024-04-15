@@ -4,6 +4,9 @@ import { DEFAULT_GIF_LIMIT, DEFAULT_RATING, SEARCH } from '../common/constants.j
 
 /**
  * Renders items that match the search query.
+ *
+ * @author Deyan
+ * @async
  * @param {string} searchTerm Search query
  */
 export async function renderSearchItems(searchTerm) {

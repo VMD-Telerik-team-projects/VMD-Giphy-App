@@ -6,6 +6,7 @@ import { getSearchTerm, q } from '../events/helpers.js';
 /**
  * Create cards for each search result and add to container (which will update main's contents)
  *
+ * @author Deyan
  * @param {object} gifs GIF data
  */
 export const toSearchView = async (gifs) => {

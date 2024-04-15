@@ -66,7 +66,10 @@ export async function toggleFavorite(gif) {
 
 /**
  * Toggle between empty and full star icons
+ *
+ * @async
  * @param {HTMLElement} button The button element to toggle the start icon
+ * @param {string} id The id of the gif
  */
 export const toggleStar = async (button, id) => {
   const gif = await fetchDetailsFromServer(id);

@@ -15,6 +15,7 @@ let keyIndex = 0;
 /**
  * Create URLs for API access (GET)
  *
+ * @author Deyan
  * @param {string} endpoint Endpoint
  * @param {string} [query] Query (optional)
  * @param {string} [rating] Rating (optional) (default = "g")
@@ -32,7 +33,6 @@ const URLBuilderGET = (
   const apiKey = APIData.keys[indexOfKey];
   const baseURL = APIData.baseURL;
   const point = APIData.endpoints[endpoint.toUpperCase()];
-  // const idPoint = APIData.endpoints[endpoint];
 
   switch (point) {
   case 'random':
@@ -40,10 +40,7 @@ const URLBuilderGET = (
   case 'trending':
     return `${baseURL}${point}?api_key=${apiKey}&limit=${GIFLimit}&rating=${rating}`;
   case 'history':
-    // return `${baseURL}?api_key=${apiKey}&ids=${query}&rating=${rating}`;
     return `${baseURL}?api_key=${apiKey}&ids=${query}`;
-    // case idPoint:
-    //   return `${baseURL}${idPoint}?api_key=${apiKey}`;
   case 'search':
     if (!query && query !== 0) {
       throw new Error('Search query cannot be undefined or null!');
@@ -59,8 +56,14 @@ const URLBuilderGET = (
   }
 };
 
-// ////////////////
-
+/**
+ * Build URL for fetching GIF details
+ *
+ * @author Miro
+ * @param {string} id
+ * @param {number} indexOfKey
+ * @return {string}
+ */
 const URLDetailsBuilder = (id, indexOfKey = keyIndex) => {
   const apiKey = APIData.keys[indexOfKey];
   const baseURL = APIData.baseURL;
@@ -70,6 +73,7 @@ const URLDetailsBuilder = (id, indexOfKey = keyIndex) => {
 /**
  * Create URL for uploading using the public API (POST)
  *
+ * @author Deyan
  * @param {number} [indexOfKey] Index of access key (optional)
  * @return {string}
  */
@@ -83,6 +87,7 @@ const URLBuilderPOST = (indexOfKey) => {
 /**
  * Public interface for fetching data from the server
  *
+ * @author Deyan
  * @async
  * @param {string} endpoint API Endpoint
  * @param {string} [query] API Query i.e. search (optional)
@@ -113,7 +118,14 @@ export async function fetchObjectFromServer(
   });
 }
 
-// ////
+/**
+ * Fetch object details from the server
+ *
+ * @author Miro
+ * @async
+ * @param {string} id
+ * @return {object}
+ */
 export async function fetchDetailsFromServer(id) {
   const url = URLDetailsBuilder(id);
 
@@ -133,6 +145,9 @@ export async function fetchDetailsFromServer(id) {
 /**
  * A function that makes a POST request to upload a GIF to a GIPHY server
  * Will always start with the last key and the limit is 5 uploads per day so it doesn't need to be loaded dynamically
+ *
+ * @author Deyan
+ * @async
  */
 export async function uploadGIFToServer() {
   const apiKey = APIData.keys[3];

@@ -12,7 +12,7 @@ export const gifDetailsView = async (gif) =>
   </div>
   <div class="gif-info">
     <p>Title: ${gif.data.title}</p>
-    <p>Uploaded by: ${gif.data.user ? gif.data.user.username : "Unknown"}</p>
+    <p>Uploaded by: ${gif.data.user ? gif.data.user.username : 'Unknown'}</p>
     <p>Upload Date: ${gif.data.import_datetime}</p>
   </div>
 </div>

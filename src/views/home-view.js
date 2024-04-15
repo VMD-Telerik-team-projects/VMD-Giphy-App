@@ -4,6 +4,8 @@ import { RANDOM } from '../common/constants.js';
 
 /**
  * The home view of the GIPHY APP.
+ *
+ * @author Deyan
  * @return {string} The content for the home view.
  */
 export const toHomeView = async () => {

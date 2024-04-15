@@ -3,6 +3,8 @@ import CardContainer from '../components/card-container.js';
 
 /**
  * Display the trending GIFs.
+ *
+ * @author Deyan
  * @param {object} gifs Trending GIFs
  */
 export const toTrendingView = async (gifs) => {

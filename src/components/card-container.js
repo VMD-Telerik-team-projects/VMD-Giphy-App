@@ -4,6 +4,8 @@ export default class CardContainer {
 
   /**
    * Constructs a div container with a class of 'card-container' and renders it
+   *
+   * @author Deyan
    */
   constructor() {
     this.#container = document.createElement('div');
@@ -15,6 +17,7 @@ export default class CardContainer {
   /**
    * Add a card to the container and update container (which updates the main section)
    *
+   * @author Deyan
    * @param {string} card
    */
   addCard(card) {
@@ -24,6 +27,7 @@ export default class CardContainer {
   /**
    * Updates the container and loads into HTML using the private addToHTML method
    *
+   * @author Deyan
    * @param {string} title
    */
   render(title) {
@@ -34,6 +38,7 @@ export default class CardContainer {
   /**
    * Load container dynamically in HTML
    *
+   * @author Deyan
    * @private
    * @param {string} title
    * @param {HTMLElement} container
