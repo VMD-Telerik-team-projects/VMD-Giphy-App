@@ -1,3 +1,5 @@
+@import "themes.css";
+
 /* Card container */
 
 .card-container {
@@ -26,7 +28,7 @@
   min-width: 16%;
   min-height: 20%;
   max-height: 20%;
-  background-color: #131313;
+  background-color: var(--card-bg);
 }
 
 .card-component img {
@@ -44,7 +46,7 @@
 .card-component a {
   margin: 0;
   text-decoration: none;
-  color: #8a8989;
+  color: var(--card-text-color);
 }
 
 .card-component a {
@@ -65,10 +67,10 @@
 #view-details {
   display: inline;
   font-size: 1vw;
-  background-color: #007BFF;
+  background-color: var(--btn-bg);
   padding: 4%;
   margin-top: 10%;
-  color: white;
+  color: var(--btn-text-color);
   border: 1px solid transparent;
   border-radius: 4%;
 }
@@ -84,7 +86,7 @@
 }
 
 #add-to-favorites {
-  color: rgb(255, 252, 252);
+  color: var(--card-text-color);
   border: none;
   background-color: transparent;
   margin-top: 5%;

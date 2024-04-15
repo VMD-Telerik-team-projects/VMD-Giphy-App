@@ -7,6 +7,9 @@ import {
   NAV_LINK,
   SEARCH,
   SEARCH_SELECTOR,
+  BODY,
+  DIDO_THEME,
+  VLADI_THEME
 } from './common/constants.js';
 import { getSearchTerm, q } from './events/helpers.js';
 import { uploadGIFToServer } from './api/api-access.js';
@@ -46,6 +49,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const gifId = cardComponent.getAttribute('data-gif-id');
 
       await toggleStar(event.target, gifId);
+    }
+
+    // switch themes event
+
+    if (event.target.id === 'switch-theme') {
+      const body = q(BODY);
+      
+      if (body.classList.contains(DIDO_THEME)) {
+        body.classList.remove(DIDO_THEME);
+        body.classList.add(VLADI_THEME);
+      } else {
+        body.classList.remove(VLADI_THEME);
+        body.classList.add(DIDO_THEME);
+      }
     }
   });
 

@@ -1,25 +1,40 @@
 .dido-theme {
+  /* Body variables */
   --body-bg: #fff;
+  --body-animation: none;
   --body-text-color: #000;
-  --btn-blue: #1DA1F2;
+  --body-bg-size: cover;
+  --body-text-stroke: none;
+
+  /* Button variables */
+  --btn-bg: #007BFF;
   --btn-text-color: #fff;
-  --favorites-text-color: #141414;
-  --header-color: #333;
-  --link-color: #1DA1F2;
-  --border-color: #ddd;
-  --card-bg: #f5f5f5;
-  --card-text-color: #333;
+
+  /* Card component variables */
+  --border-color: #333;
+  --card-bg: #fff;
+  --card-text-color: #000;
+
+  --glow-after: var(--btn-bg);
 }
 
 .vladi-theme {
-  --body-bg: linear-gradient(270deg, #252525 0%, #7c7b7b 50%, #252525 100%);
+  /* Body variables */
+  /* --body-bg: linear-gradient(270deg, #252525 0%, #7c7b7b 50%, #252525 100%); -- previous gradient background */
+  --body-bg: #252525; /* current background (no gradient) */
   --body-animation: glowing 100s infinite;
-  --body-bg-size: 200% 200%;
   --body-text-color: #fff;
-  -webkit-text-stroke: 0.3px rgb(64, 63, 63);
-  --header-color: #ccc;
-  --link-color: #4DD0E1;
+  --body-bg-size: 200% 200%;
+  --body-text-stroke: 0.3px rgb(64, 63, 63);
+
+  /* Button variables */
+  --btn-bg: #007BFF;
+  --btn-text-color: #fff;
+
+  /* Card component variables */
   --border-color: #333;
-  --card-bg: #333;
-  --card-text-color: #ccc;
+  --card-bg: #131313;
+  --card-text-color: rgb(255, 252, 252);
+
+  --glow-after: #111;
 }

@@ -39,3 +39,9 @@ export const DEFAULT_GIF_LIMIT = 25;
 export const LOCAL_STORAGE_GIF_ID = 'gifId';
 
 export const VIEW_DETAILS = 'view details';
+
+export const BODY = 'body';
+
+export const DIDO_THEME = 'dido-theme';
+
+export const VLADI_THEME = 'vladi-theme';
