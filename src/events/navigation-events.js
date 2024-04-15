@@ -18,9 +18,11 @@ import { tofavouritesRandom } from "../views/favourites-random-view.js";
 import { renderTrendingItems } from "./trending-events.js";
 import { renderSearchItems } from "./search-events.js";
 import { renderUploadedGifs } from "./history-events.js";
+import CardContainer from "../components/card-container.js";
+import { CardComponent } from "../components/card.js";
 
 /**
- * loads the specified page.
+ * Loads the specified page.
  * @param {string} page - The page to be loaded.
  * @param {string} [searchTerm] - The search term (optional).
  */
@@ -46,7 +48,7 @@ export const loadPage = async (page = "", searchTerm) => {
       return displayUploaded();
     case FAVORITES:
       setActiveNav(FAVORITES);
-      displayFavorites();
+      await displayFavorites();
     case VIEW_DETAILS:
       setActiveNav(VIEW_DETAILS);
       displayFavorites(); //TO DO: displayGifDetails
@@ -92,7 +94,7 @@ export const uploadFn = () => {
 export const displayGifDetails = () => {
   try {
     q(CONTAINER_SELECTOR).innerHTML = gifs
-      .map((gif) => gifDetailsView(gif))
+      .map(async (gif) => await gifDetailsView(gif))
       .join("");
   } catch (error) {
     console.error(error);
@@ -100,18 +102,26 @@ export const displayGifDetails = () => {
 };
 
 /** Displays favorite GIFs. */
-export const displayFavorites = () => {
+export const displayFavorites = async () => {
   try {
     const favorites = localStorage.getItem(FAVORITES)
       ? JSON.parse(localStorage.getItem(FAVORITES))
       : [];
     if (favorites.length === 0) {
       displayFavoritesRandom();
-      // q(CONTAINER_SELECTOR).innerHTML = favoritesView([]);
     } else {
-      q(CONTAINER_SELECTOR).innerHTML = favorites
-        .map((gif) => gifDetailsView(gif))
-        .join("");
+      const container = new CardContainer();
+      
+      favorites.forEach(favEl => {
+        const img = favEl.images.original.url;
+        const username = favEl.username;
+        const id = favEl.id;
+        const card = CardComponent(img, username, id);
+
+        container.addCard(card);
+      });
+
+      container.render('Favorite GIFs');
     }
   } catch (error) {
     console.error(error);

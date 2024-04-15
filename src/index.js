@@ -1,5 +1,5 @@
 // import { fetchObjectFromServer } from "../api-access.js";
-import { displayFavorites, loadPage } from "./events/navigation-events.js";
+import { loadPage } from "./events/navigation-events.js";
 import {
   DATA_PAGE,
   GIF_INPUT_SELECTOR,
@@ -7,7 +7,6 @@ import {
   NAV_LINK,
   SEARCH,
   SEARCH_SELECTOR,
-  VIEW_DETAILS,
 } from "./common/constants.js";
 import { getSearchTerm, q } from "./events/helpers.js";
 import { uploadGIFToServer } from "./api/api-access.js";
@@ -15,11 +14,11 @@ import { toggleStar } from "./events/favourite-events.js";
 import { renderGifDetails } from "./events/details-events.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  // clear search input
   q(SEARCH_SELECTOR).value = "";
 
   // add global event listener
   document.addEventListener("click", async (event) => {
-    // nav events
     if (event.target.classList.contains(NAV_LINK)) {
       loadPage(event.target.getAttribute(DATA_PAGE));
     }
@@ -29,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const fileBuffer = q(GIF_INPUT_SELECTOR).files[0].arrayBuffer();
 
       fileBuffer.then(() => {
-        console.log(uploadGIFToServer());
+        uploadGIFToServer();
       });
     }
 
@@ -37,16 +36,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target.id === "view-details") {
       const cardComponent = event.target.closest(".card-component");
       const gifId = cardComponent.getAttribute("data-gif-id");
-      console.log(gifId);
+      
       await renderGifDetails(gifId);
-      // console.log(event.target.closest(".card-component"));
     }
 
     // add to-favorites button event
     if (event.target.id === "add-to-favorites") {
       const cardComponent = event.target.closest(".card-component");
       const gifId = cardComponent.getAttribute("data-gif-id");
-      console.log(gifId);
 
       await toggleStar(event.target, gifId);
     }
@@ -59,5 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // load home page
   loadPage(HOME);
 });

@@ -3,8 +3,11 @@ import { CONTAINER_SELECTOR } from "../common/constants.js";
 import { gifDetailsView } from "../views/gif-details-view.js";
 import { q } from "./helpers.js";
 
+/**
+ * Renders the gif details.
+ * @param {string} gifId 
+ */
 export const renderGifDetails = async (gifId = null) => {
   const gifDetails = await fetchDetailsFromServer(gifId);
-  console.log(gifDetails);
   q(CONTAINER_SELECTOR).innerHTML = await gifDetailsView(gifDetails);
 };

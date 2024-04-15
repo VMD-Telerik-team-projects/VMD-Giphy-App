@@ -123,7 +123,7 @@ export async function fetchDetailsFromServer(id) {
     // if the limit of 100 API calls per hour is exceeded, use backup key
     if (data.meta.status === 429) {
       keyIndex++;
-      return fetchObjectFromServer(endpoint, query, rating, limit, keyIndex);
+      return fetchDetailsFromServer(id);
     } else {
       return data;
     }

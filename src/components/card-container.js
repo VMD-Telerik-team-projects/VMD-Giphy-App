@@ -2,10 +2,13 @@ export default class CardContainer {
   #cards = [];
   #container;
 
-  constructor(id) {
+  /**
+   * Constructs a div container with a class of 'card-container' and renders it
+   */
+  constructor() {
     this.#container = document.createElement("div");
     this.#container.classList.add("card-container");
-    // this.#container.setAttribute("data-gif-id", id);
+
     this.render();
   }
 

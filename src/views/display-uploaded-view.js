@@ -1,6 +1,10 @@
 import { CardComponent } from "../components/card.js";
 import CardContainer from "../components/card-container.js";
 
+/**
+ * Display the uploaded GIFs.
+ * @param {object} gifs Uploaded GIFs 
+ */
 export const toUploadedView = async (gifs) => {
   const container = new CardContainer();
 

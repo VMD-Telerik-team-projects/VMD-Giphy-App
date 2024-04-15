@@ -20,7 +20,7 @@ export async function addToFavorites(gif) {
   }
 }
 
-export function removeFromFavorites(id) {
+export async function removeFromFavorites(id) {
   let favorites = localStorage.getItem(FAVORITES)
     ? JSON.parse(localStorage.getItem(FAVORITES))
     : [];
@@ -31,33 +31,33 @@ export function removeFromFavorites(id) {
   alert("GIF removed from favorites!");
 }
 
-export function clearFavorites() {
+export async function clearFavorites() {
   localStorage.removeItem(FAVORITES);
   alert("All GIFs removed from favorites!");
 }
 
-export function getFavorites() {
+export async function getFavorites() {
   return localStorage.getItem(FAVORITES)
     ? JSON.parse(localStorage.getItem(FAVORITES))
     : [];
 }
 
-export function isGifInFavorites(id) {
-  const favorites = getFavorites();
+export async function isGifInFavorites(id) {
+  const favorites = await getFavorites();
   return favorites.some((favorite) => favorite.id === id);
 }
 
-export function getStar(gif) {
-  const isFavorite = isGifInFavorites(gif.id);
+export async function getStar(gif) {
+  const isFavorite = await isGifInFavorites(gif.id);
   return isFavorite ? FULL_STAR : EMPTY_STAR;
 }
 
-export function toggleFavorite(gif) {
-  const isFavorite = isGifInFavorites(gif.id);
+export async function toggleFavorite(gif) {
+  const isFavorite = await isGifInFavorites(gif.id);
   if (isFavorite) {
-    removeFromFavorites(gif.id);
+    await removeFromFavorites(gif.id);
   } else {
-    addToFavorites(gif);
+    await addToFavorites(gif);
   }
 
   return !isFavorite;

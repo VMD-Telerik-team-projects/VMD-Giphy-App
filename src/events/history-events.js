@@ -5,11 +5,16 @@ import {
   toUploadedView,
 } from "../views/display-uploaded-view.js";
 
+/**
+ * Renders the uploaded gifs.
+ */
 export async function renderUploadedGifs() {
   const gifIdKey = JSON.parse(localStorage.getItem(LOCAL_STORAGE_GIF_ID));
+  
   if (gifIdKey !== null) {
     const uploadedGifIds = gifIdKey.join(",");
     const history = await fetchObjectFromServer(HISTORY, uploadedGifIds);
+
     await toUploadedView(history);
   } else {
     toNotUploadedView();

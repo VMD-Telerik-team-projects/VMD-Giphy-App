@@ -4,7 +4,7 @@
  * @param {Object} gifs - An array of GIF objects representing the favourite GIFs.
  * @return {string} The HTML content displaying the list of favorites.
  */
-export const favoritesView = (gifs) => `
+export const favoritesView = async (gifs) => `
 <div id="gifs">
   <h1>Favorite GIFs:</h1>
   <div class="content">
