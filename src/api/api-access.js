@@ -1,9 +1,14 @@
 //  TODO: Remove magic numbers, strings, etc.
 /* eslint-disable new-cap */
 /* eslint-disable func-style */
-import { APIData } from './api-data.js';
-import { q } from '../events/helpers.js';
-import { DEFAULT_GIF_LIMIT, DEFAULT_RATING, GIF_INPUT_SELECTOR, LOCAL_STORAGE_GIF_ID } from '../common/constants.js';
+import { APIData } from "./api-data.js";
+import { q } from "../events/helpers.js";
+import {
+  DEFAULT_GIF_LIMIT,
+  DEFAULT_RATING,
+  GIF_INPUT_SELECTOR,
+  LOCAL_STORAGE_GIF_ID,
+} from "../common/constants.js";
 
 let keyIndex = 0;
 
@@ -22,32 +27,44 @@ const URLBuilderGET = (
   query,
   rating = DEFAULT_RATING,
   GIFLimit = DEFAULT_GIF_LIMIT,
-  indexOfKey,
+  indexOfKey
 ) => {
   const apiKey = APIData.keys[indexOfKey];
   const baseURL = APIData.baseURL;
   const point = APIData.endpoints[endpoint.toUpperCase()];
+  // const idPoint = APIData.endpoints[endpoint];
 
   switch (point) {
-  case 'random':
-    return `${baseURL}${point}?api_key=${apiKey}&rating=${rating}`;
-  case 'trending':
-    return `${baseURL}${point}?api_key=${apiKey}&limit=${GIFLimit}&rating=${rating}`;
-  case 'history':
-    return `${baseURL}?api_key=${apiKey}&ids=${query}&rating=${rating}`;
-  case 'search':
-    if (!query && query !== 0) {
-      throw new Error('Search query cannot be undefined or null!');
-    }
+    case "random":
+      return `${baseURL}${point}?api_key=${apiKey}&rating=${rating}`;
+    case "trending":
+      return `${baseURL}${point}?api_key=${apiKey}&limit=${GIFLimit}&rating=${rating}`;
+    case "history":
+      // return `${baseURL}?api_key=${apiKey}&ids=${query}&rating=${rating}`;
+      return `${baseURL}?api_key=${apiKey}&ids=${query}`;
+    // case idPoint:
+    //   return `${baseURL}${idPoint}?api_key=${apiKey}`;
+    case "search":
+      if (!query && query !== 0) {
+        throw new Error("Search query cannot be undefined or null!");
+      }
 
-    // replace white spaces with '+' signs (replaceAll doesn't work for some reason, maybe it's too new for the browser)
-    query = query.split(' ');
-    query = query.join('+');
+      // replace white spaces with '+' signs (replaceAll doesn't work for some reason, maybe it's too new for the browser)
+      query = query.split(" ");
+      query = query.join("+");
 
-    return `${baseURL}${point}?api_key=${apiKey}&q=${query}&limit=${GIFLimit}&rating=${rating}`;
-  default:
-    throw new Error('Invalid endpoint!');
+      return `${baseURL}${point}?api_key=${apiKey}&q=${query}&limit=${GIFLimit}&rating=${rating}`;
+    default:
+      throw new Error("Invalid endpoint!");
   }
+};
+
+//////////////////
+
+const URLDetailsBuilder = (id, indexOfKey = keyIndex) => {
+  const apiKey = APIData.keys[indexOfKey];
+  const baseURL = APIData.baseURL;
+  return `${baseURL}${id}?api_key=${apiKey}`;
 };
 
 /**
@@ -79,9 +96,26 @@ export async function fetchObjectFromServer(
   query,
   rating,
   limit,
-  indexOfKey = keyIndex,
+  indexOfKey = keyIndex
 ) {
   const url = URLBuilderGET(endpoint, query, rating, limit, indexOfKey);
+
+  return await fetch(url).then(async (res) => {
+    const data = await res.json();
+
+    // if the limit of 100 API calls per hour is exceeded, use backup key
+    if (data.meta.status === 429) {
+      keyIndex++;
+      return fetchObjectFromServer(endpoint, query, rating, limit, keyIndex);
+    } else {
+      return data;
+    }
+  });
+}
+
+//////
+export async function fetchDetailsFromServer(id) {
+  const url = URLDetailsBuilder(id);
 
   return await fetch(url).then(async (res) => {
     const data = await res.json();
@@ -107,17 +141,17 @@ export async function uploadGIFToServer() {
   const file = fileInput.files[0];
 
   if (!file) {
-    alert('Please select a file.');
+    alert("Please select a file.");
     return;
   }
 
   const formData = new FormData();
-  formData.append('api_key', apiKey);
-  formData.append('file', file);
+  formData.append("api_key", apiKey);
+  formData.append("file", file);
 
   try {
     const response = await fetch(uploadURL, {
-      method: 'POST',
+      method: "POST",
       body: formData,
     });
 
@@ -126,15 +160,16 @@ export async function uploadGIFToServer() {
     }
 
     const responseData = await response.json();
-    console.log('Upload successful:', responseData);
+    console.log("Upload successful:", responseData);
 
-    alert('Upload successful! GIF ID: ' + responseData.data.id);
+    alert("Upload successful! GIF ID: " + responseData.data.id);
 
-    const gifIdValue = JSON.parse(localStorage.getItem(LOCAL_STORAGE_GIF_ID)) || [];
+    const gifIdValue =
+      JSON.parse(localStorage.getItem(LOCAL_STORAGE_GIF_ID)) || [];
     gifIdValue.push(responseData.data.id);
     localStorage.setItem(LOCAL_STORAGE_GIF_ID, JSON.stringify(gifIdValue));
   } catch (error) {
-    console.error('Error uploading GIF:', error);
-    alert('Error uploading GIF. Please try again.');
+    console.error("Error uploading GIF:", error);
+    alert("Error uploading GIF. Please try again.");
   }
 }
