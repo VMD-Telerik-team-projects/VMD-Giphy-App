@@ -2,6 +2,7 @@
  * It displays a list of favourite GIFs.
  *
  * @author Vladislava
+ * @async
  * @param {Object} gifs - An array of GIF objects representing the favourite GIFs.
  * @return {string} The HTML content displaying the list of favorites.
  */
@@ -14,7 +15,7 @@ export const favoritesView = async (gifs) => `
         <img src="${gif.images.original.url}" alt="${gif.title}">
         <p>${gif.title}</p>
       </div>
-    `).join('\n') || '<p>Favorites category is empty.</p>'}
+    `).join('\n')}
   </div>
 </div>
 `;
