@@ -18,7 +18,7 @@
 
 #upload-form label {
   font-size: 1.4vw;
-  color: var(--details-text-color);
+  color: #000;
   cursor: pointer;
   padding: 10%;
 }
