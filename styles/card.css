@@ -54,8 +54,7 @@
 }
 
 .card-component:hover {
-  transform: scale(1.1);
-  opacity: 1;
+  transform: scale(1.02);
 } 
 
 #card-title {

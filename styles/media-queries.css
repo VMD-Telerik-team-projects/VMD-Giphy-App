@@ -1,0 +1,43 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .global-h2 {
+    font-size: 1.5vw;
+  }
+  .vladi-theme .glow-on-hover {
+    width: 50vw;
+    height: 10vh;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px to 900px) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  .global-h2 {
+    font-size: 2vw;
+  }
+  .vladi-theme .glow-on-hover {
+    width: 40vw;
+    height: 8vh;
+  }
+}
+
+/* Medium devices (landscape tablets, 900px to 1200px) */
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+  .global-h2 {
+    font-size: 2.5vw;
+  }
+  .vladi-theme .glow-on-hover {
+    width: 30vw;
+    height: 7vh;
+  }
+}
+
+/* Large devices (laptops/desktops, 1200px and up) */
+@media only screen and (min-width: 1201px) {
+  .global-h2 {
+    font-size: 3vw;
+  }
+  .vladi-theme .glow-on-hover {
+    width: 20vw;
+    height: 5vh;
+  }
+}
