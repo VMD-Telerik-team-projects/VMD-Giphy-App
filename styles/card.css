@@ -67,6 +67,8 @@
 #view-details {
   display: inline;
   font-size: 1vw;
+  width: 75%;
+  height: 15%;
   background-color: var(--btn-bg);
   padding: 4%;
   margin-top: 10%;

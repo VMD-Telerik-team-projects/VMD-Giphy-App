@@ -1,0 +1,39 @@
+#about * {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 500;
+  font-size: 2vw;
+}
+
+#about .content-image {
+  width: 30%;
+  max-width: 300px;
+  border: 1.6px solid rgb(255, 66, 151);
+  border-radius: 10px;
+  margin-top: 3%;
+  cursor: pointer;
+}
+
+#about .content-image:hover {
+  border-color: red;
+  transform: scale(1.1);
+  cursor: crosshair;
+  box-shadow: 0 0 8px rgba(255, 66, 151, 0.6); 
+}
+
+/* Switch theme button */
+#switch-theme {
+  margin-top: 2%;
+  padding: 1%;
+  width: 10%;
+  height: 2%;
+  font-size: 0.5em;
+  background: var(--btn-bg);
+  color: var(--btn-text-color);
+  border: 1px solid transparent;
+  border-radius: 3%;
+}
