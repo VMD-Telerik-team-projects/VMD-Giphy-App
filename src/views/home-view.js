@@ -16,7 +16,6 @@ export const toHomeView = async () => {
 
   return `
   <div id="home">
-  <p> Join our vibrant community of gif enthusiasts! ☻ </p>
     <h2 class="global-h2">Random GIF</h2>
     <div class="content">
       ${CardComponent(img, username, id)}
