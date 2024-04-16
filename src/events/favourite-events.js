@@ -2,6 +2,13 @@ import { fetchDetailsFromServer } from '../api/api-access.js';
 import { FAVORITES, FULL_STAR, EMPTY_STAR } from '../common/constants.js';
 import { loadPage } from './navigation-events.js';
 
+/**
+ * Adds a GIF to favorites storing them in the local storage. It checks if the gif is in favorites or not, and if it's not - it adds the GIF to the favorites array and updates the local storage.
+ * 
+ * @author Vladislava
+ * @param {Object} gif - The GIF object to be added to favorites.
+ * @returns {Promise<object>}
+ */
 export async function addToFavorites(gif) {
   console.log(gif);
   const favorites = localStorage.getItem(FAVORITES) ?
@@ -30,38 +37,6 @@ export async function removeFromFavorites(id) {
   localStorage.setItem(FAVORITES, JSON.stringify(favorites));
 
   alert('GIF removed from favorites!');
-}
-
-export async function clearFavorites() {
-  localStorage.removeItem(FAVORITES);
-  alert('All GIFs removed from favorites!');
-}
-
-export async function getFavorites() {
-  return localStorage.getItem(FAVORITES) ?
-    JSON.parse(localStorage.getItem(FAVORITES)) :
-    [];
-}
-
-export async function isGifInFavorites(id) {
-  const favorites = await getFavorites();
-  return favorites.some((favorite) => favorite.id === id);
-}
-
-export async function getStar(gif) {
-  const isFavorite = await isGifInFavorites(gif.id);
-  return isFavorite ? FULL_STAR : EMPTY_STAR;
-}
-
-export async function toggleFavorite(gif) {
-  const isFavorite = await isGifInFavorites(gif.id);
-  if (isFavorite) {
-    await removeFromFavorites(gif.id);
-  } else {
-    await addToFavorites(gif);
-  }
-
-  return !isFavorite;
 }
 
 /**

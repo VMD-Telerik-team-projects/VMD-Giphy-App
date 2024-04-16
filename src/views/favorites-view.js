@@ -1,6 +1,7 @@
 /**
  * It displays a list of favourite GIFs.
  *
+ * @author Vladislava
  * @param {Object} gifs - An array of GIF objects representing the favourite GIFs.
  * @return {string} The HTML content displaying the list of favorites.
  */

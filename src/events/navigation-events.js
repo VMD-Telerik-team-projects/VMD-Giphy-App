@@ -106,7 +106,10 @@ export const uploadFn = () => {
   q(CONTAINER_SELECTOR).innerHTML = toUploadView();
 };
 
-/** Displays GIF details. */
+/** Displays GIF details. 
+ * 
+ * @author Vladislava
+*/
 export const displayGifDetails = () => {
   try {
     q(CONTAINER_SELECTOR).innerHTML = gifs
@@ -144,7 +147,11 @@ export const displayFavorites = async () => {
   }
 };
 
-/** Displays favorite GIFs - random. */
+/** Displays favorite GIFs - random. 
+ * 
+ * @author Vladislava
+ * @async
+*/
 export const displayFavoritesRandom = async () => {
   q(CONTAINER_SELECTOR).innerHTML = await tofavouritesRandom();
 };
