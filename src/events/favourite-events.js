@@ -4,11 +4,11 @@ import { loadPage } from './navigation-events.js';
 
 /**
  * Adds a GIF to favorites storing them in the local storage. It checks if the gif is in favorites or not, and if it's not - it adds the GIF to the favorites array and updates the local storage.
- * 
+ *
  * @author Vladislava
  * @async
  * @param {Object} gif - The GIF object to be added to favorites.
- * @returns {Promise<object>}
+ * @return {Promise<object>}
  */
 export async function addToFavorites(gif) {
   console.log(gif);
@@ -30,13 +30,13 @@ export async function addToFavorites(gif) {
 }
 
 /**
- * 
+ *
  * Removes a GIF from favorites (stored in the local storage)
- * 
+ *
  * @author Vladislava
  * @async
  * @param {string} id The id of the GIF that is removed from favorites.
- * @returns {Promise<object>}
+ * @return {Promise<object>}
  */
 export async function removeFromFavorites(id) {
   let favorites = localStorage.getItem(FAVORITES) ?

@@ -4,7 +4,7 @@ import { RANDOM } from '../common/constants.js';
 
 /**
  * The favourites random view of the GIPHY APP.
- * 
+ *
  * @author Vladislava
  * @return {string} The content for the favourites if no favourites are added.
  */

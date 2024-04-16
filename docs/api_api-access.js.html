@@ -1,4 +1,32 @@
-/* eslint-disable new-cap */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: api/api-access.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: api/api-access.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable new-cap */
 /* eslint-disable func-style */
 import { APIData } from './api-data.js';
 import { q } from '../events/helpers.js';
@@ -37,13 +65,13 @@ const URLBuilderGET = (
 
   switch (point) {
   case 'random':
-    return `${baseURL}${point}?api_key=${apiKey}&rating=${rating}`;
+    return `${baseURL}${point}?api_key=${apiKey}&amp;rating=${rating}`;
   case 'trending':
-    return `${baseURL}${point}?api_key=${apiKey}&limit=${GIFLimit}&rating=${rating}`;
+    return `${baseURL}${point}?api_key=${apiKey}&amp;limit=${GIFLimit}&amp;rating=${rating}`;
   case 'history':
-    return `${baseURL}?api_key=${apiKey}&ids=${query}`;
+    return `${baseURL}?api_key=${apiKey}&amp;ids=${query}`;
   case 'search':
-    if (!query && query !== 0) {
+    if (!query &amp;&amp; query !== 0) {
       throw new Error('Search query cannot be undefined or null!');
     }
 
@@ -51,7 +79,7 @@ const URLBuilderGET = (
     query = query.split(' ');
     query = query.join('+');
 
-    return `${baseURL}${point}?api_key=${apiKey}&q=${query}&limit=${GIFLimit}&rating=${rating}`;
+    return `${baseURL}${point}?api_key=${apiKey}&amp;q=${query}&amp;limit=${GIFLimit}&amp;rating=${rating}`;
   default:
     throw new Error('Invalid endpoint!');
   }
@@ -97,7 +125,7 @@ const URLDetailsBuilder = (id, indexOfKey = keyIndex) => {
  * @param {string} [rating] Rating (optional)
  * @param {number} [limit] Number of GIFs returned (optional)
  * @param {number} [indexOfKey] Track which key needs to be used (optional)
- * @return {Promise<object>}
+ * @return {Promise&lt;object>}
  */
 export async function fetchObjectFromServer(
   endpoint,
@@ -191,3 +219,26 @@ export async function uploadGIFToServer() {
     alert('Error uploading GIF. Please try again.');
   }
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports_module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CardComponent">CardComponent</a></li><li><a href="global.html#URLBuilderGET">URLBuilderGET</a></li><li><a href="global.html#URLBuilderPOST">URLBuilderPOST</a></li><li><a href="global.html#URLDetailsBuilder">URLDetailsBuilder</a></li><li><a href="global.html#addCard">addCard</a></li><li><a href="global.html#addToFavorites">addToFavorites</a></li><li><a href="global.html#displayAbout">displayAbout</a></li><li><a href="global.html#displayFavorites">displayFavorites</a></li><li><a href="global.html#displayFavoritesRandom">displayFavoritesRandom</a></li><li><a href="global.html#displayGifDetails">displayGifDetails</a></li><li><a href="global.html#displayHome">displayHome</a></li><li><a href="global.html#displaySearch">displaySearch</a></li><li><a href="global.html#displayTrendingGifs">displayTrendingGifs</a></li><li><a href="global.html#displayUploaded">displayUploaded</a></li><li><a href="global.html#favoritesView">favoritesView</a></li><li><a href="global.html#fetchDetailsFromServer">fetchDetailsFromServer</a></li><li><a href="global.html#fetchObjectFromServer">fetchObjectFromServer</a></li><li><a href="global.html#getSearchTerm">getSearchTerm</a></li><li><a href="global.html#gifDetailsView">gifDetailsView</a></li><li><a href="global.html#loadPage">loadPage</a></li><li><a href="global.html#q">q</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#removeFromFavorites">removeFromFavorites</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#renderGifDetails">renderGifDetails</a></li><li><a href="global.html#renderSearchItems">renderSearchItems</a></li><li><a href="global.html#renderTrendingItems">renderTrendingItems</a></li><li><a href="global.html#renderUploadedGifs">renderUploadedGifs</a></li><li><a href="global.html#setActiveNav">setActiveNav</a></li><li><a href="global.html#toAboutView">toAboutView</a></li><li><a href="global.html#toHomeView">toHomeView</a></li><li><a href="global.html#toNotUploadedView">toNotUploadedView</a></li><li><a href="global.html#toSearchView">toSearchView</a></li><li><a href="global.html#toTrendingView">toTrendingView</a></li><li><a href="global.html#toUploadView">toUploadView</a></li><li><a href="global.html#toUploadedView">toUploadedView</a></li><li><a href="global.html#tofavouritesRandom">tofavouritesRandom</a></li><li><a href="global.html#toggleStar">toggleStar</a></li><li><a href="global.html#uploadFn">uploadFn</a></li><li><a href="global.html#uploadGIFToServer">uploadGIFToServer</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Apr 16 2024 18:00:47 GMT+0300 (Eastern European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

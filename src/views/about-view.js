@@ -1,7 +1,7 @@
 /**
  * The home view of the GIPHY APP.
  *
- * @author Deyan, Vladi
+ * @author Deyan, Vladislava
  * @return {string} The content for the home view.
  */
 export const toAboutView = () => `

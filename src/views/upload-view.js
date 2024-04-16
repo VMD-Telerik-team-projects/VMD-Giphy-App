@@ -1,7 +1,7 @@
 /**
  * The upload gif page view
  *
- * @author Deyan
+ * @author Miroslav, Deyan
  * @return {string} The html content for upload gif page
  */
 export const toUploadView = () => `

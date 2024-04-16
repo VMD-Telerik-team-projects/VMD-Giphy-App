@@ -5,6 +5,9 @@ import { q } from './helpers.js';
 
 /**
  * Renders the gif details.
+ *
+ * @author Miroslav
+ * @async
  * @param {string} gifId
  */
 export const renderGifDetails = async (gifId = null) => {
