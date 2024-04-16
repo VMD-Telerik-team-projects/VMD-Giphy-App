@@ -120,7 +120,12 @@ export const displayGifDetails = () => {
   }
 };
 
-/** Displays favorite GIFs. */
+/** Displays favorite GIFs.
+ * If displays random GIFS if there are no GIFs stored.
+ * 
+ * @async
+ * @returns {Promise<object>}
+ */
 export const displayFavorites = async () => {
   try {
     const favorites = localStorage.getItem(FAVORITES) ?
