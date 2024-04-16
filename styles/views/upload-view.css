@@ -3,22 +3,28 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  padding: 20px;
+  padding: 3%;
   border: 1px solid #ddd;
   border-radius: 5px;
   max-width: 30%;
-  margin: 8.5% auto auto auto;
+  margin: 3% auto auto auto;
   background-color: #f9f9f9;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
 }
 
 #upload-form input[type="file"] {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  width: 100%;
-  font-size: 1.1vw;
-  padding: 2%;
+  display: none;
+}
+
+#upload-form label {
+  font-size: 1.4vw;
+  color: var(--details-text-color);
+  cursor: pointer;
+  padding: 10%;
+}
+
+#upload-form label:hover {
+  opacity: 0.7;
 }
 
 .gif-upload-btn {

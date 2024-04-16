@@ -16,6 +16,8 @@
   --card-text-color: #000;
 
   --glow-after: var(--btn-bg);
+
+  --details-text-color: #000;
 }
 
 .vladi-theme {
@@ -37,4 +39,6 @@
   --card-text-color: rgb(255, 252, 252);
 
   --glow-after: #111;
+
+  --details-text-color: #000;
 }
