@@ -1,0 +1,56 @@
+.gif-details {
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.details-content img {
+  width: 100%;
+  height: auto;
+}
+
+.gif-info p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.gif-details:hover {
+  box-shadow: 0 5px 15px rgba(255, 222, 78, 0.3);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.details-content {
+  position: relative;
+  overflow: hidden;
+}
+
+.details-content img {
+  display: block;
+  max-width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.details-content:hover img {
+  transform: scale(1.1);
+}
+
+.gif-info {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-top: 1px solid #e6e6e6;
+  padding: 10px;
+}
+
+.gif-info p:last-child {
+  margin-bottom: 0;
+}
+
+.gif-details .details-content img {
+  border: none;
+  border-radius: 10px;
+}

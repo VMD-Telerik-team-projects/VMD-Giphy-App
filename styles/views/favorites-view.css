@@ -1,0 +1,19 @@
+#favourites {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#favourites h1 {
+  display: inline-block;
+  font-size: 24px;
+  color: #141414;
+  border: 2px dashed #ccc;
+  font-family: Arial, sans-serif; 
+}
+
+#favourites .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
